@@ -2,7 +2,9 @@
 
 import Header from './components/navbar/header';
 import NavBarLg from './components/navbar/navbar_lg';
-import Home from './components/Home'
+// import Home from './components/Home'
+// import ViewJobDetails from './companies/viewJobDetails';
+import ViewStudents from './staff/viewStudents';
 import './App.css';
 
 function App() {
@@ -13,7 +15,9 @@ function App() {
       <Header />
       <div className="pt-12 lg:flex" >
         <NavBarLg />
-        <Home />
+        {/* <Home /> */}
+        {/* <ViewJobDetails /> */}
+        <ViewStudents />
       </div>    
     </div>
 
