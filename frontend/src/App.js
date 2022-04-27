@@ -2,8 +2,13 @@
 
 import Header from './components/navbar/header';
 import NavBarLg from './components/navbar/navbar_lg';
-import Home from './components/Home'
+// import Home from './components/Home'
 import './App.css';
+// import RegisterCompanies from './companies/registerCompanies'
+//import AddStaffs from './admin/addStaffs'
+// import AddStudents from './staff/addStudents'
+// import EditStudents from './staff/editStudents'
+import EditProfile from './student/editProfile'
 
 function App() {
   return (
@@ -13,7 +18,13 @@ function App() {
       <Header />
       <div className="pt-12 lg:flex" >
         <NavBarLg />
-        <Home />
+        {/* <Home /> */}
+        {/* <RegisterCompanies /> */}
+        {/* <AddStaffs /> */}
+        {/* <AddStudents /> */}
+        {/* <EditStudents /> */}
+        <EditProfile />
+
       </div>    
     </div>
 

@@ -23,12 +23,39 @@ const Home = () => {
         </div>
       </div>
      <div>
-      <label for="desc">Description</label>
+      <label for="dept">Department</label>
       <div class="flex items-center mb-3 bg-white rounded ml-2">
        
-     <textarea class="w-full  pl-4 pr-6 py-1 font-bold rounded resize-y rounded-md focus:outline-none bg-white" row="1" id="desc" />
+     <input class="w-full  pl-4 pr-6 py-4 font-bold rounded focus:outline-none bg-white"  id="dept" type="text" placeholder="department"/>
    </div>
      </div>
+  </div>
+
+
+
+
+  
+  
+
+<p class="font-bold">Specifications</p>
+
+  <div class="flex items-center mb-3 ">
+      <div>
+        <label for="role">Role</label>
+        <div class="flex items-center mb-3 bg-white rounded mr-2">
+             
+          <input class="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="role" type="text" placeholder="role" />
+        </div>
+      </div>
+
+      <div>
+          <label for="qual">Qualification</label>
+          <div class="flex items-center mb-3 bg-white rounded mr-2">
+               
+            <input class="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="qual" type="text" placeholder="qualification" />
+          </div>
+        </div>
+      
   </div>
   <p class="font-bold">Contact details</p>
   <div class="flex items-center mb-3 ">
@@ -47,34 +74,6 @@ const Home = () => {
     <input class="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="number" type="text" placeholder="PhoneNumber" />
   </div>
   </div>
-  </div>
-<br></br>
-<br></br>
-<p class="font-bold">Specifications</p>
-<div>
-  <label for="domain">Domain</label>
-  <div class="flex items-center mb-3 bg-white rounded mr-2">
-       
-    <input class="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="domain" type="text" placeholder="domain" />
-  </div>
-</div>
-  <div class="flex items-center mb-3 ">
-      <div>
-        <label for="package">Package</label>
-        <div class="flex items-center mb-3 bg-white rounded mr-2">
-             
-          <input class="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="package" type="text" placeholder="package" />
-        </div>
-      </div>
-
-      <div>
-          <label for="site">Website</label>
-          <div class="flex items-center mb-3 bg-white rounded mr-2">
-               
-            <input class="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="site" type="url" placeholder="website" />
-          </div>
-        </div>
-      
   </div>
  
  
