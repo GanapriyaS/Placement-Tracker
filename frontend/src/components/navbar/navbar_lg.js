@@ -77,7 +77,7 @@ const navbar_lg = () => {
                   </li>
 
                   <li>
-                    <Link className="flex items-center px-4 py-2 mt-5 text-black rounded-md hover:bg-gray-200 " to="/admin/companies/view">
+                    <Link className="flex items-center px-4 py-2 mt-5 text-black rounded-md hover:bg-gray-200 " to="/admin/companies/approve">
                     <i className='bx bx-user bx-sm bx-fade-right-hover'></i>
     
                       <span className="mx-4 font-medium">Admin Page</span>

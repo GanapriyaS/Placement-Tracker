@@ -26,7 +26,9 @@ const viewJobs = () => {
                             <th
                                 className="px-5 py-3 border-b-2 border-gray-200 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
                                 Domain</th>
-
+                            <th
+                                className="px-5 py-3 border-b-2 border-gray-200 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                                Candidates</th>
                             
                             <th
                                 className="px-5 py-3 border-b-2 border-gray-200  text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
@@ -61,7 +63,16 @@ const viewJobs = () => {
 <td className="px-5 py-5 border-b border-gray-200 text-red-500 text-sm line-through">
     <p className="whitespace-no-wrap"> task.title </p>
 </td>
-
+<td className="px-5 py-5 border-b border-gray-200 text-sm">
+                                    <a href="/detail-task/task.id">
+                                        <span
+                                            className="relative inline-block px-3 py-1 font-semibold text-yellow-900 leading-tight">
+                                            <span aria-hidden
+                                                className="absolute inset-0 bg-yellow-200  rounded-xl"></span>
+                                            <span className="relative"><i className='bx bx-comment-detail bx-xs'></i></span>
+                                        </span>
+                                    </a>
+                                </td>
 
 <td className="px-5 py-5 border-b border-gray-200 text-sm">
     <a href="/delete-task/task.id">
@@ -106,7 +117,16 @@ const viewJobs = () => {
                             <td className="px-5 py-5 border-b border-gray-200 text-red-500 text-sm line-through">
     <p className="whitespace-no-wrap"> task.title </p>
 </td>
-
+<td className="px-5 py-5 border-b border-gray-200 text-sm">
+                                    <a href="/detail-task/task.id">
+                                        <span
+                                            className="relative inline-block px-3 py-1 font-semibold text-yellow-900 leading-tight">
+                                            <span aria-hidden
+                                                className="absolute inset-0 bg-yellow-200  rounded-xl"></span>
+                                            <span className="relative"><i className='bx bx-comment-detail bx-xs'></i></span>
+                                        </span>
+                                    </a>
+                                </td>
                             <td className="px-5 py-5 border-b border-gray-200 text-sm">
                                 <a href="/delete-task/task.id"  >
                                     <span

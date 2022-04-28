@@ -1,15 +1,23 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 const approveCompanies = () => {
   return (
     <div className=" p-4 pt-10 w-full h-screen  ">
-        <div className="flex justify-center pb-5">
+        <div className="lg:flex justify-around ">
   <div className="">
-    <a href="/#" className="flex items-center text-3xl lg:text-4xl font-bold">
+    <a href="/#" className="flex items-center text-4xl  font-bold">
       <span className="text-black ">Companies Requests</span>
     </a>
   </div>
+  <div className="mt-4 md:mt-0 flex">
+    <Link className="py-2 px-3 mr-1 text-sm mb-1 bg-black hover:bg-gray-400 text-white font-bold rounded transition duration-200" to="/admin/companies/view">View Companies</Link>
+    <Link className="py-2 px-3 mr-1 text-sm mb-1 bg-black hover:bg-gray-400 text-white font-bold rounded transition duration-200" to="/admin/staff/view">View Staff</Link>
+    <Link className="py-2 px-3 text-sm bg-black mb-1 hover:bg-gray-400 text-white font-bold rounded transition duration-200" to="/admin/staff/add">Add Staff</Link>
+  </div>
+  
 </div>
+<br></br><br></br><br></br>
        <div className="shadow rounded overflow-auto">
                     <table className="leading-normal table-auto w-full ">
                         <thead >
