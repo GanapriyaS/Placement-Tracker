@@ -1,10 +1,14 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom'
 const studentDetails = () => {
   return (
     <div className="w-full p-4 h-auto lg:h-screen pt-8 overflow-y-auto mt-6 px-10 ">
+        <a href="/#" className="flex justify-center items-center text-3xl lg:text-4xl font-bold mb-6">
+      <span className="text-black ">Our Students</span>
+    </a>
     <div className="shadow rounded overflow-auto">
-                    <table className="leading-normal table-auto w-full ">
+    
+                    <table className="yellowleading-normal table-auto w-full ">
                         <thead >
                             <tr className="bg-gray-100">
                                 <th
@@ -38,7 +42,23 @@ const studentDetails = () => {
                         </thead>
                         <tbody >
                            
-                            
+                        <tr className="text-black">
+    <td className="px-5 py-3 border-b  border-gray-200 text-sm">
+        <p className="whitespace-no-wrap"></p>
+    </td>
+    <td className="px-5 py-3 border-b border-gray-200 text-red-500 text-sm line-through">
+    
+    <input className=" pl-4 pr-6 py-2 font-bold rounded  focus:outline-none bg-white" id="name" type="search" placeholder="Search name" />
+    </td>
+    <td className="px-5 py-3 border-b border-gray-200  text-sm">
+    <input className=" pl-4 pr-6 py-2 font-bold rounded  focus:outline-none bg-white" id="domain" type="search" placeholder="Search domain" />
+    </td>
+    <td className="px-5 py-3 border-b border-gray-200  text-sm">
+    <input className=" pl-4 pr-6 py-2 font-bold rounded  focus:outline-none bg-white" id="dept" type="search" placeholder="Search department" />
+    </td>
+    
+</tr>   
+
 <tr className="bg-gray-600 text-gray-200">
     <td className="px-5 py-5 border-b  border-gray-200 text-sm">
         <p className="whitespace-no-wrap">1</p>
@@ -61,16 +81,16 @@ const studentDetails = () => {
     </td>
     
     <td className="px-5 py-5 border-b border-gray-200 text-sm">
-        <a href="/detail-task/task.id">
+        <Link to="/student/profile">
             <span className="relative inline-block px-3 py-1 font-semibold text-yellow-900 leading-tight">
                 <span aria-hidden className="absolute inset-0 bg-yellow-200  rounded-xl"></span>
                 <span className="relative"><i className='bx bx-comment-detail bx-xs'></i></span>
             </span>
-        </a>
+        </Link>
     </td>
     <td className="px-5 py-5 border-b border-gray-200 text-sm">
         <a href="/detail-task/task.id">
-            <span className="relative inline-block px-3 py-1 font-semibold text-yellow-900 leading-tight">
+            <span className="relative inline-block px-3 py-1 font-semibold text-blue-900 leading-tight">
                 <span aria-hidden className="absolute inset-0 bg-blue-200  rounded-xl"></span>
                 <span className="relative"><i class='bx bxs-conversation'></i></span>
             </span>
@@ -109,7 +129,7 @@ const studentDetails = () => {
     </td>
     <td className="px-5 py-5 border-b border-grey-200 text-sm">
         <a href="/detail-task/task.id">
-            <span className="relative inline-block px-3 py-1 font-semibold text-yellow-900 leading-tight">
+            <span className="relative inline-block px-3 py-1 font-semibold text-blue-900 leading-tight">
                 <span aria-hidden className="absolute inset-0 bg-blue-200  rounded-xl"></span>
                 <span className="relative"><i class='bx bxs-conversation'></i></span>
             </span>

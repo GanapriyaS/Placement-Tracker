@@ -14,6 +14,7 @@ const approveCompanies = () => {
     <Link className="py-2 px-3 mr-1 text-sm mb-1 bg-black hover:bg-gray-400 text-white font-bold rounded transition duration-200" to="/admin/companies/view">View Companies</Link>
     <Link className="py-2 px-3 mr-1 text-sm mb-1 bg-black hover:bg-gray-400 text-white font-bold rounded transition duration-200" to="/admin/staff/view">View Staff</Link>
     <Link className="py-2 px-3 text-sm bg-black mb-1 hover:bg-gray-400 text-white font-bold rounded transition duration-200" to="/admin/staff/add">Add Staff</Link>
+    
   </div>
   
 </div>
@@ -87,12 +88,12 @@ const approveCompanies = () => {
     </td>
     
     <td className="px-5 py-5 border-b border-gray-200 text-sm">
-        <a href="/detail-task/task.id">
+        <Link to="/companies/profile">
             <span className="relative inline-block px-3 py-1 font-semibold text-yellow-900 leading-tight">
                 <span aria-hidden className="absolute inset-0 bg-yellow-200  rounded-xl"></span>
                 <span className="relative"><i className='bx bx-comment-detail bx-xs'></i></span>
             </span>
-        </a>
+        </Link>
     </td>
     
 </tr>
@@ -122,12 +123,12 @@ const approveCompanies = () => {
     </td>
                                 
     <td className="px-5 py-5 border-b border-gray-200 text-sm">
-        <a href="/detail-task/task.id">
+        <Link to="/companies/profile">
             <span className="relative inline-block px-3 py-1 font-semibold text-yellow-900 leading-tight">
                 <span aria-hidden className="absolute inset-0 bg-yellow-200  rounded-xl"></span>
                 <span className="relative"><i className='bx bx-comment-detail bx-xs'></i></span>
             </span>
-        </a>
+        </Link>
     </td>
                                 
                             </tr>

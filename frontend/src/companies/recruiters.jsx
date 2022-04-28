@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom'
 const recruiters = () => {
   return (
     <div className=" p-4 pt-10 w-full h-screen  ">
@@ -19,7 +19,7 @@ const recruiters = () => {
                                 </th>
                                 <th
                                     className="px-5 py-3 border-b-2 border-gray-200 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
-                                    Name</th>
+                                    Company Name</th>
                                 <th
                                     className="px-5 py-3 border-b-2 border-gray-200 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
                                     Role</th>
@@ -49,7 +49,33 @@ const recruiters = () => {
 
                         </thead>
                         <tbody >
-                           
+                        <tr className="text-black">
+    <td className="px-5 py-3 border-b  border-gray-200 text-sm">
+        <p className="whitespace-no-wrap"></p>
+    </td>
+    <td className="px-5 py-3 border-b border-gray-200 text-red-500 text-sm line-through">
+    
+    <input className=" px-1 py-2 font-bold rounded  focus:outline-none bg-white" id="name" type="search" placeholder="Search name" />
+    </td>
+    <td className="px-5 py-3 border-b  border-gray-200 text-sm">
+        <p className="whitespace-no-wrap"></p>
+    </td>
+    <td className="px-5 py-3 border-b border-gray-200  text-sm">
+    <input className=" px-1 py-2 font-bold rounded  focus:outline-none bg-white" id="domain" type="search" placeholder="Search domain" />
+    </td>
+    <td className="px-5 py-3 border-b border-gray-200  text-sm">
+    <input className=" px-1 py-2 font-bold rounded  focus:outline-none bg-white" id="mode" type="search" placeholder="Search mode" />
+    </td>
+    <td className="px-5 py-3 border-b  border-gray-200 text-sm">
+        <p className="whitespace-no-wrap"></p>
+    </td>
+    <td className="px-5 py-3 border-b border-gray-200  text-sm">
+    <input className=" px-1  py-2 font-bold rounded  focus:outline-none bg-white" id="type" type="search" placeholder="Search type" />
+    </td>
+    
+    
+    
+</tr>       
                             
 <tr className="bg-gray-600 text-gray-200">
     <td className="px-5 py-5 border-b  border-gray-200 text-sm">
@@ -83,14 +109,14 @@ const recruiters = () => {
         </p>
     </td>
     <td className="px-5 py-5 border-b border-gray-200 text-sm">
-                                    <a href="/detail-task/task.id">
+                                    <Link to="/companies/jobs/details">
                                         <span
                                             className="relative inline-block px-3 py-1 font-semibold text-yellow-900 leading-tight">
                                             <span aria-hidden
                                                 className="absolute inset-0 bg-yellow-200  rounded-xl"></span>
                                             <span className="relative"><i className='bx bx-comment-detail bx-xs'></i></span>
                                         </span>
-                                    </a>
+                                    </Link>
                                 </td>
     <td className="px-5 py-5 border-b border-gray-200 text-sm ">
         <p className="cursor-default">

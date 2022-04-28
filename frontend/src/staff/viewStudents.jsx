@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom'
 const viewStudents = () => {
   return (
     <div className=" p-4 pt-10 w-full h-screen  ">
@@ -22,7 +22,7 @@ const viewStudents = () => {
                                     Name</th>
                                 <th
                                     className="px-5 py-3 border-b-2 border-gray-200 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
-                                    Dept</th>
+                                    Roll Number</th>
                                 <th
                                     className="px-5 py-3 border-b-2 border-gray-200 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
                                     Batch</th>
@@ -48,7 +48,25 @@ const viewStudents = () => {
 
                         </thead>
                         <tbody >
-                           
+                        <tr className="text-black">
+    <td className="px-5 py-3 border-b  border-gray-200 text-sm">
+        <p className="whitespace-no-wrap"></p>
+    </td>
+    <td className="px-5 py-3 border-b border-gray-200 text-red-500 text-sm line-through">
+    
+    <input className=" pl-4 pr-6 py-2 font-bold rounded  focus:outline-none bg-white" id="name" type="search" placeholder="Search name" />
+    </td>
+    <td className="px-5 py-3 border-b border-gray-200  text-sm">
+    <input className=" pl-4 pr-6 py-2 font-bold rounded  focus:outline-none bg-white" id="role" type="search" placeholder="Search role number" />
+    </td>
+    <td className="px-5 py-3 border-b border-gray-200  text-sm">
+    <input className=" pl-4 pr-6 py-2 font-bold rounded  focus:outline-none bg-white" id="batch" type="search" placeholder="Search batch" />
+    </td>
+    <td className="px-5 py-3 border-b border-gray-200  text-sm">
+    <input className=" pl-4 pr-6 py-2 font-bold rounded  focus:outline-none bg-white" id="dept" type="search" placeholder="Search department" />
+    </td>
+    
+</tr>               
                             
 <tr className="bg-gray-600 text-gray-200">
     <td className="px-5 py-5 border-b  border-gray-200 text-sm">
@@ -80,20 +98,20 @@ const viewStudents = () => {
         </a>
     </td>
     <td className="px-5 py-5 border-b border-gray-200 text-sm">
-        <a href="/update-task/task.id">
+        <Link to="/staff/student/edit">
             <span className="relative inline-block px-3 py-1 font-semibold text-blue-900 leading-tight">
                 <span aria-hidden className="absolute inset-0 bg-blue-200 rounded-xl"></span>
                 <span className="relative"><i className='bx bx-edit-alt bx-xs'></i></span>
             </span>
-        </a>
+        </Link>
     </td>
     <td className="px-5 py-5 border-b border-gray-200 text-sm ">
-        <p className="cursor-default">
+    <Link to="/student/profile">
             <span className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
                 <span aria-hidden className="absolute inset-0 bg-green-200  rounded-xl"></span>
                 <span className="relative"><i className='bx bx-award bx-xs'></i></span>
             </span>
-        </p>
+        </Link>
     </td>
     <td className="px-5 py-5 border-b border-gray-200 text-sm">
         <a href="/detail-task/task.id">

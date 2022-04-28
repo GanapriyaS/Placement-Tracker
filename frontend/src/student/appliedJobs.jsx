@@ -1,5 +1,5 @@
-import React from 'react'
-
+import React from 'react';
+import {Link} from 'react-router-dom';
 const appliedJobs = () => {
   return (
     <div className=" p-4 pt-10 w-full h-screen  ">
@@ -41,7 +41,22 @@ const appliedJobs = () => {
 
                         </thead>
                         <tbody >
-                           
+                        <tr className="text-black">
+    <td className="px-5 py-3 border-b  border-gray-200 text-sm">
+        <p className="whitespace-no-wrap"></p>
+    </td>
+    <td className="px-5 py-3 border-b border-gray-200 text-red-500 text-sm line-through">
+    
+    <input className=" pl-4 pr-6 py-2 font-bold rounded  focus:outline-none bg-white" id="role" type="search" placeholder="Search role" />
+    </td>
+    <td className="px-5 py-3 border-b  border-gray-200 text-sm">
+        <p className="whitespace-no-wrap"></p>
+    </td>
+    <td className="px-5 py-3 border-b border-gray-200  text-sm">
+    <input className=" pl-4 pr-6 py-2 font-bold rounded  focus:outline-none bg-white" id="company" type="search" placeholder="Search company" />
+    </td>
+    
+</tr>             
                             
 <tr className="bg-gray-600 text-gray-200">
     <td className="px-5 py-5 border-b  border-gray-200 text-sm">
@@ -61,14 +76,14 @@ const appliedJobs = () => {
     
     
     <td className="px-5 py-5 border-b border-gray-200 text-sm">
-                                    <a href="/detail-task/task.id">
+    <Link to="/companies/jobs/details">
                                         <span
                                             className="relative inline-block px-3 py-1 font-semibold text-yellow-900 leading-tight">
                                             <span aria-hidden
                                                 className="absolute inset-0 bg-yellow-200  rounded-xl"></span>
                                             <span className="relative"><i className='bx bx-comment-detail bx-xs'></i></span>
                                         </span>
-                                    </a>
+                                    </Link>
                                 </td>
                                 <td className="px-5 py-5 border-b border-gray-200 text-red-500 text-sm line-through">
         <p className="whitespace-no-wrap"> task.title </p>
@@ -95,14 +110,14 @@ const appliedJobs = () => {
     </td>
    
     <td className="px-5 py-5 border-b border-gray-200 text-sm">
-                                    <a href="/detail-task/task.id">
+                                   <Link to="/companies/jobs/details">
                                         <span
                                             className="relative inline-block px-3 py-1 font-semibold text-yellow-900 leading-tight">
                                             <span aria-hidden
                                                 className="absolute inset-0 bg-yellow-200  rounded-xl"></span>
                                             <span className="relative"><i className='bx bx-comment-detail bx-xs'></i></span>
                                         </span>
-                                    </a>
+                                    </Link>
                                 </td>
                                 <td className="px-5 py-5 border-b border-gray-200 text-red-500 text-sm line-through">
         <p className="whitespace-no-wrap"> task.title </p>

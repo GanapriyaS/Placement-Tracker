@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom'
 const viewCompanies = () => {
   return (
     <div className=" p-4 pt-10 w-full h-screen  ">
@@ -79,12 +79,12 @@ const viewCompanies = () => {
     </td>
     
     <td className="px-5 py-5 border-b border-gray-200 text-sm ">
-        <p className="cursor-default">
+        <Link to="/companies/profile">
             <span className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
                 <span aria-hidden className="absolute inset-0 bg-green-200  rounded-xl"></span>
                 <span className="relative"><i className='bx bx-award bx-xs'></i></span>
             </span>
-        </p>
+        </Link>
     </td>
     
 </tr>

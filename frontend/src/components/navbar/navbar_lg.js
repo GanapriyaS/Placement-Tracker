@@ -29,7 +29,7 @@ const navbar_lg = () => {
                   <Link className="flex items-center px-4 py-2 mt-5 text-black rounded-md hover:bg-gray-200 " to="/companies/view">
                   <i className='bx bx-award bx-sm bx-fade-right-hover' ></i>
   
-                    <span className="mx-4 font-medium">View Companies</span>
+                    <span className="mx-4 font-medium">View Jobs</span>
                   </Link>
                 </li>
                 <li>

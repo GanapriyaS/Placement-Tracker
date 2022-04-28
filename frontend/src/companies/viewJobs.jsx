@@ -89,20 +89,20 @@ const viewJobs = () => {
     </a>
 </td>
 <td className="px-5 py-5 border-b border-gray-200 text-sm">
-    <a href="/update-task/task.id">
+<Link to="/companies/jobs/edit">
         <span className="relative inline-block px-3 py-1 font-semibold text-blue-900 leading-tight">
             <span aria-hidden className="absolute inset-0 bg-blue-200 rounded-xl"></span>
             <span className="relative"><i className='bx bx-edit-alt bx-xs'></i></span>
         </span>
-    </a>
+    </Link>
 </td>
 <td className="px-5 py-5 border-b border-gray-200 text-sm ">
-    <p className="cursor-default">
+    <Link to="/companies/jobs/details">
         <span className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
             <span aria-hidden className="absolute inset-0 bg-green-200  rounded-xl"></span>
             <span className="relative"><i className='bx bx-award bx-xs'></i></span>
         </span>
-    </p>
+    </Link>
 </td>
 
 </tr>
