@@ -28,7 +28,6 @@ import EditStaffProfile from "./staff/editStaffProfile";
 
 import AppliedJobs from "./student/appliedJobs";
 import StudentProfile from "./student/studentProfile";
-import StudentDetails from "./student/studentDetails";
 import EditStudentProfile from "./student/editStudentProfile";
 
 import './App.css';
@@ -51,7 +50,6 @@ function App() {
           <Route path="profile" element={<StudentProfile />} />
           <Route path="editprofile" element={<EditStudentProfile />} />
           <Route path="appliedjobs" element={<AppliedJobs />} />
-          <Route path="view" element={<StudentDetails />} />
         </Route>
 
         <Route path="staff" element={<NavBar type="other" />}>
