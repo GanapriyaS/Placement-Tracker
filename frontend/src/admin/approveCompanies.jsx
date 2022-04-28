@@ -1,12 +1,12 @@
 import React from 'react'
 
-const appliedStudents = () => {
+const approveCompanies = () => {
   return (
     <div className=" p-4 pt-10 w-full h-screen  ">
         <div className="flex justify-center pb-5">
   <div className="">
     <a href="/#" className="flex items-center text-3xl lg:text-4xl font-bold">
-      <span className="text-black ">Applicants</span>
+      <span className="text-black ">Companies Requests</span>
     </a>
   </div>
 </div>
@@ -22,25 +22,19 @@ const appliedStudents = () => {
                                     Name</th>
                                 <th
                                     className="px-5 py-3 border-b-2 border-gray-200 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
-                                    Mail</th>
-                                <th
-                                    className="px-5 py-3 border-b-2 border-gray-200 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
-                                    Phone no</th>
-
-                                <th
-                                    className="px-5 py-3 border-b-2 border-gray-200 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
-                                    Details</th>
+                                    Domain</th>
+                                
 
                                 
                                 <th
                                     className="px-5 py-3 border-b-2 border-gray-200  text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
-                                    Delete</th>
-                                <th
-                                    className="px-5 py-3 border-b-2 border-gray-200 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
-                                    Hire</th>
+                                    Approve</th>
+                                
                                 
 
-                                
+                                <th
+                                    className="px-5 py-3 border-b-2 border-gray-200 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                                    Details</th>
                                     
                             </tr>
 
@@ -60,30 +54,9 @@ const appliedStudents = () => {
              tadsfasdklf 
         </p>
     </td>
-    <td className="px-5 py-5 border-b border-gray-200 text-red-500 text-sm line-through">
-        <p className="whitespace-no-wrap"> task.title </p>
-    </td>
     
+   
     
-    <td className="px-5 py-5 border-b border-gray-200 text-sm">
-                                    <a href="/detail-task/task.id">
-                                        <span
-                                            className="relative inline-block px-3 py-1 font-semibold text-yellow-900 leading-tight">
-                                            <span aria-hidden
-                                                className="absolute inset-0 bg-yellow-200  rounded-xl"></span>
-                                            <span className="relative"><i className='bx bx-comment-detail bx-xs'></i></span>
-                                        </span>
-                                    </a>
-                                </td>
-                                <td className="px-5 py-5 border-b border-gray-200 text-sm">
-                                    <a href="/delete-task/task.id"  >
-                                        <span
-                                            className="relative inline-block px-3 py-1 font-semibold text-red-900 leading-tight">
-                                            <span aria-hidden className="absolute inset-0 bg-red-200 rounded-xl"></span>
-                                            <span className="relative"><i className='bx bx-trash-alt bx-xs'></i></span>
-                                        </span>
-                                    </a>
-                                </td>
     <td className="px-5 py-5 border-b border-gray-200 text-sm ">
         <p className="cursor-default">
             <span className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
@@ -91,6 +64,15 @@ const appliedStudents = () => {
                 <span className="relative"><i className='bx bx-award bx-xs'></i></span>
             </span>
         </p>
+    </td>
+    
+    <td className="px-5 py-5 border-b border-gray-200 text-sm">
+        <a href="/detail-task/task.id">
+            <span className="relative inline-block px-3 py-1 font-semibold text-yellow-900 leading-tight">
+                <span aria-hidden className="absolute inset-0 bg-yellow-200  rounded-xl"></span>
+                <span className="relative"><i className='bx bx-comment-detail bx-xs'></i></span>
+            </span>
+        </a>
     </td>
     
 </tr>
@@ -108,39 +90,25 @@ const appliedStudents = () => {
                                          task.created_date 
                                     </p>
                                 </td>
-                                <td className="px-5 py-5 border-b border-gray-200 text-red-500 text-sm line-through">
-        <p className="whitespace-no-wrap"> task.title </p>
-    </td>
+                                
    
+                                <td className="px-5 py-5 border-b border-gray-200 text-sm ">
+        <p className="cursor-default">
+            <span className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
+                <span aria-hidden className="absolute inset-0 bg-green-200  rounded-xl"></span>
+                <span className="relative"><i className='bx bx-award bx-xs'></i></span>
+            </span>
+        </p>
+    </td>
+                                
     <td className="px-5 py-5 border-b border-gray-200 text-sm">
-                                    <a href="/detail-task/task.id">
-                                        <span
-                                            className="relative inline-block px-3 py-1 font-semibold text-yellow-900 leading-tight">
-                                            <span aria-hidden
-                                                className="absolute inset-0 bg-yellow-200  rounded-xl"></span>
-                                            <span className="relative"><i className='bx bx-comment-detail bx-xs'></i></span>
-                                        </span>
-                                    </a>
-                                </td>
-                                <td className="px-5 py-5 border-b border-gray-200 text-sm">
-                                    <a href="/delete-task/task.id"  >
-                                        <span
-                                            className="relative inline-block px-3 py-1 font-semibold text-red-900 leading-tight">
-                                            <span aria-hidden className="absolute inset-0 bg-red-200 rounded-xl"></span>
-                                            <span className="relative"><i className='bx bx-trash-alt bx-xs'></i></span>
-                                        </span>
-                                    </a>
-                                </td>
-                                <td className="px-5 py-5 border-b border-gray-200 text-sm">
-                                    <a href="/complete_task/task.id">
-                                        <span
-                                            className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                                            <span aria-hidden
-                                                className="absolute inset-0 bg-green-200  rounded-xl"></span>
-                                            <span className="relative"><i className='bx bx-award bx-xs'></i></span>
-                                        </span>
-                                    </a>
-                                </td>
+        <a href="/detail-task/task.id">
+            <span className="relative inline-block px-3 py-1 font-semibold text-yellow-900 leading-tight">
+                <span aria-hidden className="absolute inset-0 bg-yellow-200  rounded-xl"></span>
+                <span className="relative"><i className='bx bx-comment-detail bx-xs'></i></span>
+            </span>
+        </a>
+    </td>
                                 
                             </tr>
                             
@@ -196,4 +164,4 @@ const appliedStudents = () => {
   )
 }
 
-export default appliedStudents
+export default approveCompanies
