@@ -1,10 +1,10 @@
 import React from 'react'
 
-const registerCompanies = () => {
+const addStaff = () => {
   return (
     <>
   
-    <div className="w-full h-full p-4  mt-8 overflow-y-auto ">
+    <div className="w-full h-screen p-4  mt-8 overflow-y-auto ">
     <div className="grid justify-items-center ">
     
     <p className="bg-black rounded-full text-white py-3 px-4">Registration</p>
@@ -15,7 +15,6 @@ const registerCompanies = () => {
 <form className=" lg:py-0 py-5  grid justify-center" action="#">
   <p className="font-bold">Profile</p>
   <div className="flex items-center mb-3 ">
-  <div className="flex items-center mb-3 ">
       <div>
         <label htmlFor="roll">Name</label>
         <div className="flex items-center mb-3 bg-white rounded mr-2">
@@ -24,20 +23,45 @@ const registerCompanies = () => {
         </div>
       </div>
       <div>
-      <label for="desc">Description</label>
+          <label htmlFor="batch">Department</label>
           <div className="flex items-center mb-3 bg-white rounded mr-2">
                
-          <textarea className="w-full  pl-4 pr-6 py-1 font-bold rounded resize-y rounded-md focus:outline-none bg-white" row="1" id="desc" />
+            <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="dept" type="text" placeholder="department" />
           </div>
         </div>
       
   </div>
-     
+
+
+
+
+  
+  
+
+<p className="font-bold">Specifications</p>
+
+  <div className="flex items-center mb-3 ">
+      <div>
+        <label htmlFor="role">Role</label>
+        <div className="flex items-center mb-3 bg-white rounded mr-2">
+             
+          <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="role" type="text" placeholder="role" />
+        </div>
+      </div>
+
+      <div>
+          <label htmlFor="qual">Qualification</label>
+          <div className="flex items-center mb-3 bg-white rounded mr-2">
+               
+            <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="qual" type="text" placeholder="qualification" />
+          </div>
+        </div>
+      
   </div>
   <p className="font-bold">Contact details</p>
   <div className="flex items-center mb-3 ">
       <div>
-        <label for="email">Email</label>
+        <label htmlFor="email">Email</label>
         <div className="flex items-center mb-3 bg-white rounded mr-2">
              
           <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="email" type="email" placeholder="Email" />
@@ -45,40 +69,12 @@ const registerCompanies = () => {
       </div>
       
       <div>
-      <label for="number">Phone number</label>
+      <label htmlFor="number">Phone number</label>
   <div className="flex items-center mb-3 bg-white rounded mr-2">
        
     <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="number" type="text" placeholder="PhoneNumber" />
   </div>
   </div>
-  </div>
-<br></br>
-<br></br>
-<p className="font-bold">Specifications</p>
-<div>
-  <label for="domain">Domain</label>
-  <div className="flex items-center mb-3 bg-white rounded mr-2">
-       
-    <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="domain" type="text" placeholder="domain" />
-  </div>
-</div>
-  <div className="flex items-center mb-3 ">
-      <div>
-        <label for="package">Package</label>
-        <div className="flex items-center mb-3 bg-white rounded mr-2">
-             
-          <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="package" type="text" placeholder="package" />
-        </div>
-      </div>
-
-      <div>
-          <label for="site">Website</label>
-          <div className="flex items-center mb-3 bg-white rounded mr-2">
-               
-            <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="site" type="url" placeholder="website" />
-          </div>
-        </div>
-      
   </div>
  
  
@@ -92,4 +88,4 @@ const registerCompanies = () => {
   )
 }
 
-export default registerCompanies
+export default addStaff
