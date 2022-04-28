@@ -11,7 +11,7 @@ import EditStaff from "./admin/editStaff";
 import ApproveCompanies from "./admin/approveCompanies";
 
 
-import AddJobs from "./companies/addJob";
+import AddJob from "./companies/addJob";
 import AppliedStudents from "./companies/appliedStudents";
 import CompanyProfile from "./companies/companyProfile";
 import Recruiters from "./companies/recruiters";
@@ -19,6 +19,7 @@ import RegisterCompanies from "./companies/registerCompanies";
 import ViewJobDetails from './companies/viewJobDetails';
 import ViewJobs from "./companies/viewJobs";
 import EditJob from "./companies/editJob";
+import EditCompaniesProfile from "./companies/editCompaniesProfile";
 
 import AddStudent from "./staff/addStudent";
 import StaffProfile from "./staff/staffProfile";
@@ -73,12 +74,13 @@ function App() {
         <Route path="companies" element={<NavBar type="other" />}>
           <Route path="view" element={<Recruiters />} />
           <Route path="profile" element={<CompanyProfile />} />
-          <Route path="jobs/add" element={<AddJobs />} />
+          <Route path="jobs/add" element={<AddJob />} />
           <Route path="jobs/edit" element={<EditJob />} />
           <Route path="jobs/view" element={<ViewJobs />} />
-          <Route path="jobs/viewdetails" element={<ViewJobDetails />} />
+          <Route path="jobs/details" element={<ViewJobDetails />} />
           <Route path="register" element={<RegisterCompanies />} />
           <Route path="applicants" element={<AppliedStudents />} />
+          <Route path="editprofile" element={<EditCompaniesProfile />} />
         </Route>
         <Route path="*" element={<NoMatch />} />
       </Routes>
