@@ -19,6 +19,7 @@ import ViewJobDetails from './companies/viewJobDetails';
 import ViewJobs from "./companies/viewJobs";
 import EditJob from "./companies/editJob";
 import EditCompaniesProfile from "./companies/editCompaniesProfile";
+import ApproveCompanies from "./admin/approveCompanies";
 
 import AddStudent from "./staff/addStudent";
 import StaffProfile from "./staff/staffProfile";
@@ -66,7 +67,7 @@ function App() {
           <Route path="staff/add" element={<AddStaff />} />
           <Route path="staff/view" element={<ViewStaffs />} />
           <Route path="staff/edit" element={<EditStaff />} />
-          <Route path="companies/approve" element={<ViewStudents />} /> 
+          <Route path="companies/approve" element={<ApproveCompanies />} /> 
           <Route path="companies/view" element={<ViewCompanies />} />
         </Route>
 
