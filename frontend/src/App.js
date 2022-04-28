@@ -8,6 +8,7 @@ import AddStaff from './admin/addStaff';
 import ViewCompanies from "./admin/viewCompanies";
 import ViewStaffs from "./admin/viewStaffs";
 import EditStaff from "./admin/editStaff";
+import ApproveCompanies from "./admin/approveCompanies";
 
 
 import AddJob from "./companies/addJob";
@@ -64,7 +65,7 @@ function App() {
           <Route path="staff/add" element={<AddStaff />} />
           <Route path="staff/view" element={<ViewStaffs />} />
           <Route path="staff/edit" element={<EditStaff />} />
-          <Route path="companies/approve" element={<ViewStudents />} /> 
+          <Route path="companies/approve" element={<ApproveCompanies />} /> 
           <Route path="companies/view" element={<ViewCompanies />} />
         </Route>
 
