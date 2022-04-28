@@ -6,7 +6,7 @@ const viewJobDetails = () => {
     
 <div className="flex justify-between ">
   <div className="">
-    <a href="#" className="flex items-center text-4xl text-5xl font-bold">
+    <a href="/#" className="flex items-center text-4xl text-5xl font-bold">
       <span className="text-black ">Job role</span>
     </a>
   </div>

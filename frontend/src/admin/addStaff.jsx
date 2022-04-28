@@ -7,7 +7,7 @@ const addStaff = () => {
     <div className="w-full h-screen p-4  mt-8 overflow-y-auto ">
     <div className="grid justify-items-center ">
     
-    <p className="bg-black rounded-full text-white py-3 px-4">Registration</p>
+    <p className="bg-black rounded-full text-white py-3 px-4">Add staff</p>
 
 </div>
 <br></br><br></br>
@@ -81,7 +81,7 @@ const addStaff = () => {
   
    
     <br></br>
-    <button className="py-4 px-6 bg-black hover:bg-black-600 text-white font-bold rounded transition duration-200">Register</button>
+    <button className="py-4 px-6 bg-black hover:bg-black-600 text-white font-bold rounded transition duration-200">Add</button>
   </form>
     </div>
     </>
