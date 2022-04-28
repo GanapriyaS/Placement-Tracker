@@ -8,7 +8,6 @@ import AddStaff from './admin/addStaff';
 import ViewCompanies from "./admin/viewCompanies";
 import ViewStaffs from "./admin/viewStaffs";
 import EditStaff from "./admin/editStaff";
-import ApproveCompanies from "./admin/approveCompanies";
 
 
 import AddJob from "./companies/addJob";
@@ -29,6 +28,7 @@ import EditStaffProfile from "./staff/editStaffProfile";
 
 import AppliedJobs from "./student/appliedJobs";
 import StudentProfile from "./student/studentProfile";
+import StudentDetails from "./student/studentDetails";
 import EditStudentProfile from "./student/editStudentProfile";
 
 import './App.css';
@@ -51,6 +51,7 @@ function App() {
           <Route path="profile" element={<StudentProfile />} />
           <Route path="editprofile" element={<EditStudentProfile />} />
           <Route path="appliedjobs" element={<AppliedJobs />} />
+          <Route path="view" element={<StudentDetails />} />
         </Route>
 
         <Route path="staff" element={<NavBar type="other" />}>
@@ -65,7 +66,7 @@ function App() {
           <Route path="staff/add" element={<AddStaff />} />
           <Route path="staff/view" element={<ViewStaffs />} />
           <Route path="staff/edit" element={<EditStaff />} />
-          <Route path="companies/approve" element={<ApproveCompanies />} /> 
+          <Route path="companies/approve" element={<ViewStudents />} /> 
           <Route path="companies/view" element={<ViewCompanies />} />
         </Route>
 
