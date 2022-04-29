@@ -11,8 +11,9 @@ const studentProfile = () => {
       <span className="text-black ">Student Profile</span>
     </a>
   </div>
-  <div className="">
-    <Link className="py-3 px-4 w-full bg-black hover:bg-black-600 text-white font-bold rounded transition duration-200" to="/student/appliedjobs">View appliedjobs</Link>
+  <div className="grid lg:flex">
+    <Link className="py-3 px-4 mr-1 w-full bg-black hover:bg-black-600 text-white font-bold rounded transition duration-200" to="/student/appliedjobs">View&nbsp;appliedjobs</Link>
+    <Link className="py-3 px-4 w-full bg-black hover:bg-black-600 text-white font-bold rounded transition duration-200" to="/student/editprofile">EditProfile</Link>
   </div>
   
 </div>
