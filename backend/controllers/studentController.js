@@ -1,16 +1,16 @@
-const viewstudentprofile = (req, res) => {
+const viewstudentprofile = async (req,res) => {
             res.status(201).json("viewstudentprofile")
         }
 
-const viewallstudents = (req, res) => {
+const viewallstudents = async (req,res) => {
     res.status(201).json("viewstudentprofile")
 }
 
-const editstudentprofile = (req, res) => {
+const editstudentprofile = async (req,res) => {
     res.json("editstudentprofile")
 }
 
-const viewappliedjobs = (req, res) => {
+const viewappliedjobs = async (req,res) => {
     res.json("viewappliedjobs")
 }
 

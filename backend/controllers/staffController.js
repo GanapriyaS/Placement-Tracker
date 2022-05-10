@@ -1,8 +1,8 @@
-const viewstaffprofile = (req, res) => {
+const viewstaffprofile = async (req,res) => {
     res.json("getstaffprofile");
 }
 
-const editstaffprofile =  (req, res) => {
+const editstaffprofile =  async (req,res) => {
     if(true) {
         res.json("editstaffprofile");
     } else {
@@ -12,7 +12,7 @@ const editstaffprofile =  (req, res) => {
 }
 
 
-const deletestudent = (req, res) => {
+const deletestudent = async (req,res) => {
 
     if(true) {
         res.json({ message: 'Consumer product removed' });
@@ -22,15 +22,15 @@ const deletestudent = (req, res) => {
     }
 }
 
-const addstudent =(req, res) => {
+const addstudent =async (req,res) => {
     res.status(201).json("addStudent")
 }
 
-const viewstudents =(req, res) => {
+const viewstudents =async (req,res) => {
     res.status(201).json("addStudent")
 }
 
-const editstudent = (req, res) => {
+const editstudent = async (req,res) => {
     // const { prod_name, price, image, seller_name, prod_size, quantity, avalaible_location } = req.body
     if (true) {
         res.status(201).json("editstudent")

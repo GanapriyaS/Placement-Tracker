@@ -1,6 +1,6 @@
 // import jwt from 'jsonwebtoken'
 
-const staff =(req, res, next) => {
+const staff = async (req, res, next) => {
     // let token
 
     // if (
@@ -28,15 +28,15 @@ const staff =(req, res, next) => {
     next()
 }
 
-const company =(req, res, next) => {
+const company = async (req, res, next) => {
     next()
 }
 
-const student =(req, res, next) => {
+const student = async (req, res, next) => {
     next()
 }
 
-const admin = (req, res, next) => {
+const admin = async (req, res, next) => {
     // app.use(express.urlencoded({ extended: false }))s
     if(false) {
         next()

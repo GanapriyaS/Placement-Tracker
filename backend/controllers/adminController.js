@@ -1,8 +1,8 @@
-const viewcompanies = (req, res) => {
+const viewcompanies = async (req,res) => {
     res.json("getSeedProducts");
 }
 
-const disapprovecompany = (req, res) => {
+const disapprovecompany = async (req,res) => {
 
     if (true) {
         res.json({ message: "Product removed" });
@@ -12,11 +12,11 @@ const disapprovecompany = (req, res) => {
     }
 }
 
-const approvecompany = (req, res) => {
+const approvecompany = async (req,res) => {
     res.status(201).json("approvecompany")
 }
 
-const deletestaff = (req, res) => {
+const deletestaff = async (req,res) => {
 
     if(true) {
         res.json({ message: 'Consumer product removed' });
@@ -26,11 +26,11 @@ const deletestaff = (req, res) => {
     }
 }
 
-const addstaff =(req, res) => {
+const addstaff =async (req,res) => {
     res.status(201).json("addstaff")
 }
 
-const editstaff = (req, res) => {
+const editstaff = async (req,res) => {
     // const { prod_name, price, image, seller_name, prod_size, quantity, avalaible_location } = req.body
     if (true) {
         res.status(201).json("editstaff")
@@ -40,7 +40,7 @@ const editstaff = (req, res) => {
     }
 }
 
-const viewstaffs =(req, res) => {
+const viewstaffs =async (req,res) => {
     res.status(201).json("addStudent")
 }
 

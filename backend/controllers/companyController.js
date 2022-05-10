@@ -1,16 +1,16 @@
-const viewjobs = (req, res) => {
+const viewjobs = async (req,res) => {
     res.json("viewjobs");
 }
 
-const viewalljobs = (req, res) => {
+const viewalljobs = async (req,res) => {
     res.json("viewjobs");
 }
 
-const viewapplicants = (req, res) => {
+const viewapplicants = async (req,res) => {
     res.json("applicants");
 }
 
-const viewcompanprofile = (req, res) => {
+const viewcompanprofile = async (req,res) => {
 
     if (true) {
         res.json("companydetails");
@@ -21,7 +21,7 @@ const viewcompanprofile = (req, res) => {
 }
 
 
-const editcompanyprofile = (req, res) => {
+const editcompanyprofile = async (req,res) => {
     // const productLendMachine = await ProductLendMachines.findById(req.params.id);
 
     if(true) {
@@ -32,7 +32,7 @@ const editcompanyprofile = (req, res) => {
     }
 }
 
-const deletejob = (req, res) => {
+const deletejob = async (req,res) => {
     // const lendMachine = await ProductLendMachines.findById(req.params.id);
 
     if(true) {
@@ -43,7 +43,7 @@ const deletejob = (req, res) => {
     }
 }
 
-const deleteapplicant = (req, res) => {
+const deleteapplicant = async (req,res) => {
     // const lendMachine = await ProductLendMachines.findById(req.params.id);
 
     if(true) {
@@ -54,7 +54,7 @@ const deleteapplicant = (req, res) => {
     }
 }
 
-const addjob =  (req, res) => {
+const addjob =  async (req,res) => {
     // const lendMachine = new ProductLendMachines({
     //     name: 'sample machine',
     //     user: req.user._id,
@@ -69,7 +69,7 @@ const addjob =  (req, res) => {
     res.status(201).json("addjob")
 }
 
-const editjob =  (req, res) => {
+const editjob =  async (req,res) => {
     // const { name, price, image, description, target_plant, quantity, machine_power } = req.body
 
     // const updateLendMachine = await ProductLendMachines.findById(req.params.id)
@@ -92,11 +92,11 @@ const editjob =  (req, res) => {
     }
 }
 
-const viewjobdetails = (req, res) => {
+const viewjobdetails = async (req,res) => {
     res.json("viewjobdetails")
 }
 
-const hireapplicant = (req, res) => {
+const hireapplicant = async (req,res) => {
     res.json("viewjobdetails")
 }
 

@@ -1,4 +1,4 @@
-const login = (req, res) => {
+const login = async (req,res) => {
     
 
     // if (true && (await user.matchPassword(password))) {
@@ -17,7 +17,7 @@ const login = (req, res) => {
     res.send("login")
 }
 
-// const registerUser = asyncHandler(async (req, res) => {
+// const registerUser = asyncHandler(async async (req,res) => {
 //     const { name, email, password, cropSelection } = req.body
 
 //     const userExists = await User.findOne({ email })
@@ -50,7 +50,7 @@ const login = (req, res) => {
 // })
 
 
-const companyregister = async (req, res) => {
+const companyregister = async (req,res) => {
 
     // if (user) {
     //     res.json({
@@ -68,7 +68,7 @@ const companyregister = async (req, res) => {
 }
 
 
-// const updateUserProfile = asyncHandler(async (req, res) => {
+// const updateUserProfile = asyncHandler(async async (req,res) => {
 //     const user = await User.findById(req.user._id)
 
 //     if (user) {
@@ -96,7 +96,7 @@ const companyregister = async (req, res) => {
 // })
 
 
-// const deleteUser = (req, res) => {
+// const deleteUser = async (req,res) => {
 //     const user = await User.findById(req.params.id)
 
 //     if (user) {
