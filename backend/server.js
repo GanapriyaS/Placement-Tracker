@@ -1,5 +1,5 @@
 const express = require("express");
-const connectDB= require('./config/db.js');
+
 
 const { notFound, errorHandler }= require('./middleware/errorMiddlware.js')
 const staffRoutes= require('./routes/staffRoutes.js')
@@ -25,7 +25,7 @@ app.use(function(req, res, next) {
     next();
   });
 
-connectDB();
+
 
 
 app.use('/', userRoutes);

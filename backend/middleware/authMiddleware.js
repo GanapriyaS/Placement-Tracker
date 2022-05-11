@@ -38,7 +38,7 @@ const student = async (req, res, next) => {
 
 const admin = async (req, res, next) => {
     // app.use(express.urlencoded({ extended: false }))s
-    if(false) {
+    if(true) {
         next()
     } else {
         res.status(401)
