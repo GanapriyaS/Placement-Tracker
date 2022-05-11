@@ -4,7 +4,6 @@ const {
     viewapplicants,
     viewjobs,
     viewcompanyprofile,
-    viewalljobs,
     editcompanyprofile,
     editjob,
     deleteapplicant,
@@ -26,9 +25,7 @@ router
     .post(addjob)
     .get(viewjobs)
 
-router
-    .route('/alljobs')
-    .get(viewalljobs)
+
 
 router
     .route('/job/:jobid')
@@ -43,11 +40,11 @@ router
     .post(addapplicant)
 
 router
-    .route('/:id/job/:jobid/applicant/:id/hire')
+    .route('/:id/job/:jobid/applicant/:studentid/hire')
     .put( hireapplicant)
 
 router
-    .route('/:id/job/:jobid/applicant/:id/reject')
+    .route('/:id/job/:jobid/applicant/:studentid/reject')
     .put( deleteapplicant)
 
 module.exports = router

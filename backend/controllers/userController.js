@@ -6,7 +6,9 @@ const login = async (req,res) => {
     try {
         const results = await client.query("SELECT * FROM login WHERE username=$1 and pass=$2 and type=$3", [username,password,type]);
         if(results.rowCount > 0){
-            const id = results.rows.key
+            const id = results.rows[0].key
+
+            console.log(id)
             const token =jwt.sign({id}, "vscode", {
                 expiresIn: '30d'
             });
@@ -68,10 +70,21 @@ const companyregister = async (req,res) => {
    }
 }
 
+const getalljobs = async (req,res) => {
+    try {
+        const results = await client.query("SELECT * FROM jobs");
+        res.status(200).json(results.rows);
+      } catch (err) {
+        console.log(err)
+        res.status(500).json({"msg":"Server Error"})
+      }
+    }
+
 
 
 module.exports = {
     login,
     companyregister,
-    auth
+    auth,
+    getalljobs
 }

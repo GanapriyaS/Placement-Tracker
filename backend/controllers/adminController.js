@@ -14,6 +14,13 @@ const viewcompanies = async (req,res) => {
 const disapprovecompany = async (req,res) => {
     try {
         const result = await client.query("update company set approval=$1 where id=$2", [false,req.params.id]);
+        if(result.rowCount>0){
+            const results=await client.query("SELECT * FROM login where key=$1 and type=$2", [req.params.id,"company"]);
+            if(results.rowCount >0){
+                
+            await client.query("DELETE FROM login  where key=$1 and type=$2", [req.params.id,"company"]);
+            }
+        }
                 res.status(200).json(result.rowCount)
       } catch (err) {
         console.log(err)

@@ -1,7 +1,7 @@
 const client= require('../config/db.js');
 const viewjobs = async (req,res) => {
     try {
-        const results = await client.query("SELECT * FROM jobs where companyname=$1", [req.params.jobid]);
+        const results = await client.query("SELECT * FROM jobs where companyname=$1", [req.params.id]);
         res.status(200).json(results.rows);
       } catch (err) {
         console.log(err)
@@ -9,23 +9,41 @@ const viewjobs = async (req,res) => {
       }
 }
 
-const viewalljobs = async (req,res) => {
-    try {
-        const results = await client.query("SELECT * FROM jobs");
-        res.status(200).json(results.rows);
-      } catch (err) {
-        console.log(err)
-        res.status(500).json({"msg":"Server Error"})
-      }
-}
+
 
 const addapplicant = async (req,res) => {
-    res.json("applicants");
+    const { studentid } = req.body
+    
+    
+    console.log(req.params)
+    try {
+     const results = await client.query("SELECT * FROM application where student_id=$1 and job_id=$2", [studentid,req.params.jobid]);
+     console.log(results.rowCount)
+     
+         if(results.rowCount <= 0){
+            
+             const results = await client.query("INSERT INTO application( student_id,job_id,hire)VALUES($1,$2,$3)", [studentid,req.params.jobid,"pending"]);
+             res.status(201).json(results.rowCount)
+         }
+     else{
+         res.status(400).json({"msg":"Already applied !! "})
+     }
+   } catch (err) {
+     console.log(err)
+     res.status(500).json({"msg":"Server Error"})
+   }
 }
 
 const viewapplicants = async (req,res) => {
-    res.json("applicants");
-}
+    try {
+        const results = await client.query("SELECT * FROM student where id in (select student_id from application where job_id=$1 and hire=$2)", [req.params.jobid,"pending"]);
+        res.status(200).json(results.rows);
+      } catch (err) {
+        console.log(err)
+        res.status(500).json({"msg":"Server Error"})
+      }
+    }
+
 
 const viewcompanyprofile = async (req,res) => {
     try {
@@ -62,14 +80,14 @@ const deletejob = async (req,res) => {
 }
 
 const deleteapplicant = async (req,res) => {
-    // const lendMachine = await ProductLendMachines.findById(req.params.id);
-
-    if(true) {
-        res.json({ message: ' Removed' });
-    } else {
-        res.status(404)
-        throw new Error('Machine not Found')
-    }
+    try {
+        const result = await client.query("update application set hire=$1 WHERE job_id=$2 and student_id=$3", ["rejected",req.params.jobid,req.params.studentid]);
+        console.log(result)
+        res.status(200).json(result.rowCount);
+      } catch (err) {
+        console.log(err)
+        res.status(500).json({"msg":"Server Error"})
+      }
 }
 
 const addjob =  async (req,res) => {
@@ -106,14 +124,20 @@ const viewjobdetails = async (req,res) => {
     }
 
 const hireapplicant = async (req,res) => {
-    res.json("viewjobdetails")
+    try {
+        const result = await client.query("update application set hire=$1 WHERE job_id=$2 and student_id=$3", ["hired",req.params.jobid,req.params.studentid]);
+        console.log(result)
+        res.status(200).json(result.rowCount);
+      } catch (err) {
+        console.log(err)
+        res.status(500).json({"msg":"Server Error"})
+      }
 }
 
 module.exports = { 
     viewapplicants,
     viewjobs,
     viewcompanyprofile,
-    viewalljobs,
     addapplicant,
     editcompanyprofile,
     editjob,

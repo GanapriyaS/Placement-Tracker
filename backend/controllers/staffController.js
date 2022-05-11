@@ -11,23 +11,40 @@ const viewstaffprofile = async (req,res) => {
 }
 
 const editstaffprofile =  async (req,res) => {
-    if(true) {
-        res.json("editstaffprofile");
-    } else {
-        res.status(404)
-        throw new Error('Consumer Product not Found')
-    }
+    const { name, dept, role, qual,email,number } = req.body
+    try {
+        const results = await client.query("SELECT * FROM staff where email=$1 and id!=$2", [email,req.params.id]);
+        console.log(results.rowCount)
+        if(results.rowCount <= 0){
+            const result = await client.query("SELECT * FROM staff where phoneno=$1 and id!=$2", [number,req.params.id]);
+            if(results.rowCount <= 0){
+                const result = await client.query("update staff set name=$1, dept=$2, qualification=$3, job=$4, email=$5, phoneno=$6 where id=$7", [name,dept,role,qual,email,number,req.params.id]);
+                res.status(200).json(result.rowCount)
+            }
+            else{
+                res.status(400).json({"msg":"Already existing phoneno !! Try another number "})
+            }
+        }
+        else{
+            res.status(400).json({"msg":"Already existing mailID !! Try another mail id "})
+        }
+      } catch (err) {
+        console.log(err)
+        res.status(500).json({"msg":"Server Error"})
+    }  
 }
 
 
-const deletestudent = async (req,res) => {
 
-    if(true) {
-        res.json({ message: 'Consumer product removed' });
-    } else {
-        res.status(404)
-        throw new Error('Consumer Product not Found')
-    }
+const deletestudent = async (req,res) => {
+    try {
+        const result = await client.query("DELETE FROM student WHERE id=$1", [req.params.id]);
+        console.log(result)
+        res.status(200).json(result.rowCount);
+      } catch (err) {
+        console.log(err)
+        res.status(500).json({"msg":"Server Error"})
+      }
 }
 
 const addstudent =async (req,res) => {
@@ -60,13 +77,16 @@ const viewstudents =async (req,res) => {
 }
 
 const editstudent = async (req,res) => {
-    // const { prod_name, price, image, seller_name, prod_size, quantity, avalaible_location } = req.body
-    if (true) {
-        res.status(201).json("editstudent")
-    } else {
-        res.status(401)
-        throw new Error('Product not found')
-    }
+    const { name, dept, batch, rollno } = req.body
+    try {
+        
+                const result = await client.query("update student set name=$1, dept=$2, batch=$3, cgpa=$4, rollno=$5, skill=$6, email=$7, portfolio=$8,github=$9, linkedin=$10, phoneno=$11 where id=$12", [name,dept, batch, "cgpa", rollno,"skill", req.params.id, req.params.id,req.params.id, req.params.id, req.params.id,req.params.id]);
+                res.status(200).json(result.rowCount)
+           
+      } catch (err) {
+        console.log(err)
+        res.status(500).json({"msg":"Server Error"})
+    }  
 }
 
 module.exports = {

@@ -4,7 +4,8 @@ const router = express.Router()
 const { 
    login,
    companyregister,
-   auth
+   auth,
+   getalljobs
 } = require('../controllers/userController.js')
 
 
@@ -12,4 +13,5 @@ const {
 router.route('/register').post(companyregister)
 router.post('/login', login)
 router.post('/auth', auth)
+router.get('/alljobs', getalljobs)
 module.exports = router
