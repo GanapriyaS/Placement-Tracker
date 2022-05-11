@@ -28,7 +28,7 @@ router
 router
     .route('/staff/:id')
     .delete(admin, deletestaff)
-    .put(admin, editstaff)
+    .put(editstaff)
 
 router
     .route('/staff')
