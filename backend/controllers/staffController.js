@@ -1,3 +1,4 @@
+const client= require('../config/db.js');
 const viewstaffprofile = async (req,res) => {
     res.json("getstaffprofile");
 }
@@ -24,10 +25,18 @@ const deletestudent = async (req,res) => {
 
 const addstudent =async (req,res) => {
     res.status(201).json("addStudent")
+    
 }
 
 const viewstudents =async (req,res) => {
-    res.status(201).json("addStudent")
+    //res.status(201).json("addStudent")
+    try {
+        const results = await client.query("SELECT * FROM student");
+        res.status(200).json(results.rows);
+      } catch (err) {
+        console.log(err)
+        res.status(500).json({"msg":"Server Error"})
+      }
 }
 
 const editstudent = async (req,res) => {

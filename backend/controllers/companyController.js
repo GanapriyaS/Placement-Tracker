@@ -1,3 +1,4 @@
+const client= require('../config/db.js');
 const viewjobs = async (req,res) => {
     res.json("viewjobs");
 }

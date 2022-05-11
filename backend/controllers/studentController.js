@@ -1,9 +1,17 @@
+const client= require('../config/db.js');
 const viewstudentprofile = async (req,res) => {
             res.status(201).json("viewstudentprofile")
         }
 
 const viewallstudents = async (req,res) => {
-    res.status(201).json("viewstudentprofile")
+    //res.status(201).json("viewstudentprofile")
+    try {
+        const results = await client.query("SELECT * FROM student");
+        res.status(200).json(results.rows);
+      } catch (err) {
+        console.log(err)
+        res.status(500).json({"msg":"Server Error"})
+      }
 }
 
 const editstudentprofile = async (req,res) => {

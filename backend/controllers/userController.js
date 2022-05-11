@@ -1,3 +1,4 @@
+const client= require('../config/db.js');
 const login = async (req,res) => {
     
 
