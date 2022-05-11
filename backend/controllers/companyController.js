@@ -19,31 +19,36 @@ const viewalljobs = async (req,res) => {
       }
 }
 
+const addapplicant = async (req,res) => {
+    res.json("applicants");
+}
+
 const viewapplicants = async (req,res) => {
     res.json("applicants");
 }
 
-const viewcompanprofile = async (req,res) => {
-
-    if (true) {
-        res.json("companydetails");
-    } else {
-        res.status(404)
-        throw new Error('Seed not Found')
+const viewcompanyprofile = async (req,res) => {
+    try {
+        const results = await client.query("SELECT * FROM company where id=$1", [req.params.id]);
+        res.status(200).json(results.rows);
+      } catch (err) {
+        console.log(err)
+        res.status(500).json({"msg":"Server Error"})
+      }
     }
-}
 
 
 const editcompanyprofile = async (req,res) => {
-    // const productLendMachine = await ProductLendMachines.findById(req.params.id);
-
-    if(true) {
-        res.json("companyprofile");
-    } else {
-        res.status(404)
-        throw new Error('Machine not Found')
+    const { name, description, department, package, website, email, phoneno } = req.body
+    try {
+        const result = await client.query("update company set name=$1, description=$2, department=$3, package=$4,website=$5, email=$6, phoneno=$7 where id=$8", [name, description, department, package, website, email, phoneno,req.params.id]);
+        res.status(200).json(result.rowCount)
+      } catch (err) {
+        console.log(err)
+        res.status(500).json({"msg":"Server Error"})
     }
 }
+
 
 const deletejob = async (req,res) => {
     try {
@@ -107,8 +112,9 @@ const hireapplicant = async (req,res) => {
 module.exports = { 
     viewapplicants,
     viewjobs,
-    viewcompanprofile,
+    viewcompanyprofile,
     viewalljobs,
+    addapplicant,
     editcompanyprofile,
     editjob,
     deleteapplicant,

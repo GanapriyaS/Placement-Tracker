@@ -1,4 +1,5 @@
 const client= require('../config/db.js');
+const uuid = require('uuid');
 const viewcompanies = async (req,res) => {
     const { approval } = req.body
     try {
@@ -23,7 +24,15 @@ const disapprovecompany = async (req,res) => {
 const approvecompany = async (req,res) => {
     try {
         const result = await client.query("update company set approval=$1 where id=$2", [true,req.params.id]);
+        if(result.rowCount>0){
+            const results=await client.query("SELECT * FROM login where key=$1 and type=$2", [req.params.id,"company"]);
+            if(results.rowCount <=0){
+                console.log("dfasd")
+            await client.query("INSERT INTO login( username,pass, key, type)VALUES($1,$2,$3,$4)", [req.params.id,"gct",req.params.id,"company"]);
+            }
+        }
                 res.status(200).json(result.rowCount)
+
       } catch (err) {
         console.log(err)
         res.status(500).json({"msg":"Server Error"})
@@ -52,7 +61,11 @@ const addstaff =async (req,res) => {
         if(results.rowCount <= 0){
             const results = await client.query("SELECT * FROM staff where phoneno=$1", [number]);
             if(results.rowCount <= 0){
-                const results = await client.query("INSERT INTO staff( name, dept, qualification, job, email, phoneno)VALUES($1,$2,$3,$4,$5,$6)", [name,dept,role,qual,email,number]);
+                const uid = uuid.v1()
+                const results = await client.query("INSERT INTO staff( id,name, dept, qualification, job, email, phoneno)VALUES($1,$2,$3,$4,$5,$6,$7)", [uid,name,dept,role,qual,email,number]);
+                if(results.rowCount>0){
+                    await client.query("INSERT INTO login( username,pass, key, type)VALUES($1,$2,$3,$4)", [uid,"gct",uid,"staff"]);
+                }
                 res.status(201).json(results.rowCount)
             }
             else{

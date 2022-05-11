@@ -19,7 +19,7 @@ router
 
 router
     .route('/approve/:id')
-    .put(admin,approvecompany)
+    .post(admin,approvecompany)
 
 router
     .route('/disapprove/:id')

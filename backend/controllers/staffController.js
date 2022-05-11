@@ -1,3 +1,4 @@
+const uuid = require('uuid');
 const client= require('../config/db.js');
 const viewstaffprofile = async (req,res) => {
     try {
@@ -33,8 +34,11 @@ const addstudent =async (req,res) => {
     const { name, dept, role, batch } = req.body
        console.log(req.body)
        try {
-        
-                const results = await client.query("INSERT INTO student(  name, dept, batch, cgpa, rollno, skill, email, portfolio, github, linkedin, phoneno)VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)", [name,dept,batch,"nil",role,"nil","nil","nil","nil","nil","nil"]);
+        const uid = uuid.v1()
+                const results = await client.query("INSERT INTO student( id, name, dept, batch, cgpa, rollno, skill, email, portfolio, github, linkedin, phoneno)VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12)", [uid,name,dept,batch,"nil",role,"nil",uid,uid,uid,uid,uid]);
+                if(results.rowCount===1){
+                    await client.query("INSERT INTO login( username,pass, key, type)VALUES($1,$2,$3,$4)", [uid,"gct",uid,"student"]);
+                }
                 res.status(201).json(results.rowCount)
     
       } catch (err) {

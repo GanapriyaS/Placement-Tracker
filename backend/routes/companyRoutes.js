@@ -3,12 +3,13 @@ const {  admin, staff, student } = require( '../middleware/authMiddleware.js')
 const {
     viewapplicants,
     viewjobs,
-    viewcompanprofile,
+    viewcompanyprofile,
     viewalljobs,
     editcompanyprofile,
     editjob,
     deleteapplicant,
     deletejob,
+    addapplicant,
     addjob,
     viewjobdetails,
     hireapplicant
@@ -18,7 +19,7 @@ const router = express.Router()
 router
     .route('/:id/')
     .put(editcompanyprofile)
-    .get( viewcompanprofile)
+    .get( viewcompanyprofile)
 
 router
     .route('/:id/job')
@@ -39,6 +40,7 @@ router
 router
     .route('/:id/job/:jobid/applicants')
     .get( viewapplicants)
+    .post(addapplicant)
 
 router
     .route('/:id/job/:jobid/applicant/:id/hire')
