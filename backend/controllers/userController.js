@@ -22,7 +22,9 @@ const login = async (req,res) => {
         res.status(500).json({"msg":"Server Error"})
       }
 }
-
+const home = async (req,res) => {
+    res.json({"Hi":"Helloworld"})
+}
 const auth = async (req,res) => {
     const token = req.body.id
   // console.log(token);
@@ -86,5 +88,6 @@ module.exports = {
     login,
     companyregister,
     auth,
-    getalljobs
+    getalljobs,
+    home
 }
