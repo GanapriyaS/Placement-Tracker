@@ -32,7 +32,6 @@ app.use('/', userRoutes);
 app.use('/staff', staffRoutes);
 app.use('/company', companyRoutes);
 app.use('/student',studentRoutes);
-app.use('/companies', companyRoutes);
 app.use('/admin', adminRoutes);
 
 

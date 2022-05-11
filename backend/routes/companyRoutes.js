@@ -16,12 +16,12 @@ const {
 const router = express.Router()
 
 router
-    .route('/')
+    .route('/:id/')
     .put(editcompanyprofile)
     .get( viewcompanprofile)
 
 router
-    .route('/job')
+    .route('/:id/job')
     .post(addjob)
     .get(viewjobs)
 
@@ -30,22 +30,22 @@ router
     .get(viewalljobs)
 
 router
-    .route('/job/:id')
+    .route('/job/:jobid')
     .delete( deletejob)
     .put(editjob)
     .get( viewjobdetails)
 
     
 router
-    .route('/job/:id/applicants')
+    .route('/:id/job/:jobid/applicants')
     .get( viewapplicants)
 
 router
-    .route('/job/:id/applicants/:id/hire')
+    .route('/:id/job/:jobid/applicant/:id/hire')
     .put( hireapplicant)
 
 router
-    .route('/job/:id/applicants/:id/reject')
+    .route('/:id/job/:jobid/applicant/:id/reject')
     .put( deleteapplicant)
 
 module.exports = router
