@@ -1,20 +1,33 @@
 const client= require('../config/db.js');
 const viewcompanies = async (req,res) => {
-    res.json("getSeedProducts");
+    const { approval } = req.body
+    try {
+            const results = await client.query("SELECT * FROM company where approval=$1",[approval]);
+            res.status(200).json(results.rows);
+      } catch (err) {
+        console.log(err)
+        res.status(500).json({"msg":"Server Error"})
+      }
 }
 
 const disapprovecompany = async (req,res) => {
-
-    if (true) {
-        res.json({ message: "Product removed" });
-    } else {
-        res.status(404)
-        throw new Error('Seed not Found')
+    try {
+        const result = await client.query("update company set approval=$1 where id=$2", [false,req.params.id]);
+                res.status(200).json(result.rowCount)
+      } catch (err) {
+        console.log(err)
+        res.status(500).json({"msg":"Server Error"})
     }
 }
 
 const approvecompany = async (req,res) => {
-    res.status(201).json("approvecompany")
+    try {
+        const result = await client.query("update company set approval=$1 where id=$2", [true,req.params.id]);
+                res.status(200).json(result.rowCount)
+      } catch (err) {
+        console.log(err)
+        res.status(500).json({"msg":"Server Error"})
+    }
 }
 
 const deletestaff = async (req,res) => {
