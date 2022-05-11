@@ -24,7 +24,17 @@ const deletestudent = async (req,res) => {
 }
 
 const addstudent =async (req,res) => {
-    res.status(201).json("addStudent")
+    const { name, dept, role, batch } = req.body
+       console.log(req.body)
+       try {
+        
+                const results = await client.query("INSERT INTO student(  name, dept, batch, cgpa, rollno, skill, email, portfolio, github, linkedin, phoneno)VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)", [name,dept,batch,"nil",role,"nil","nil","nil","nil","nil","nil"]);
+                res.status(201).json(results.rowCount)
+    
+      } catch (err) {
+        console.log(err)
+        res.status(500).json({"msg":"Server Error"})
+      }
     
 }
 
