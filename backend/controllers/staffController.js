@@ -1,6 +1,12 @@
 const client= require('../config/db.js');
 const viewstaffprofile = async (req,res) => {
-    res.json("getstaffprofile");
+    try {
+        const results = await client.query("SELECT * FROM staff where id=$1", [req.params.id]);
+        res.status(200).json(results.rows);
+      } catch (err) {
+        console.log(err)
+        res.status(500).json({"msg":"Server Error"})
+      }
 }
 
 const editstaffprofile =  async (req,res) => {

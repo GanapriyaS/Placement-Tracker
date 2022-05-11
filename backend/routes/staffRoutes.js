@@ -12,7 +12,7 @@ const {
 const { admin } = ('../middleware/authMiddleware.js')
 
 router.route('/student').post( addstudent).get( viewstudents)
-router.route('/').get(viewstaffprofile).put(editstaffprofile)
+router.route('/:id').get(viewstaffprofile).put(editstaffprofile)
 router.route('/student/:id').put(editstudent).delete(deletestudent)
 
 module.exports = router
