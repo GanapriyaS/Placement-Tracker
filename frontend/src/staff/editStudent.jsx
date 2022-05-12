@@ -1,6 +1,9 @@
 import React from 'react'
 
 const editStudent = () => {
+  const handleChange = (e) => {
+    console.log("hello")
+  };
   return (
     <>
   
@@ -19,14 +22,14 @@ const editStudent = () => {
         <label htmlFor="roll">Name</label>
         <div className="flex items-center mb-3 bg-white rounded mr-2">
              
-          <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="name" type="text" placeholder="Name" />
+          <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="name" name="name" onChange={handleChange} required type="text" placeholder="Name" />
         </div>
       </div>
       <div>
           <label htmlFor="batch">Department</label>
           <div className="flex items-center mb-3 bg-white rounded mr-2">
                
-            <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="dept" type="text" placeholder="department" />
+            <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="dept" name="dept" onChange={handleChange} required type="text" placeholder="department" />
           </div>
         </div>
       
@@ -38,14 +41,14 @@ const editStudent = () => {
         <label htmlFor="roll">Roll no.</label>
         <div className="flex items-center mb-3 bg-white rounded mr-2">
              
-          <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="roll" type="text" placeholder="roll no" />
+          <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="roll" name="roll" onChange={handleChange} required type="text" placeholder="roll no" />
         </div>
       </div>
       <div>
           <label htmlFor="batch">Batch</label>
           <div className="flex items-center mb-3 bg-white rounded mr-2">
                
-            <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="batch" type="text" placeholder="batch" />
+            <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="batch" name="batch" onChange={handleChange} required type="text" placeholder="batch" />
           </div>
         </div>
       
@@ -56,7 +59,7 @@ const editStudent = () => {
         <label htmlFor="username">Username</label>
         <div className="flex items-center mb-3 bg-white rounded mr-2">
              
-          <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="username" type="text" placeholder="username" />
+          <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="username" name="username" onChange={handleChange} required type="text" placeholder="username" />
         </div>
       </div>
       
@@ -64,7 +67,7 @@ const editStudent = () => {
       <label htmlFor="pwd">Password</label>
   <div className="flex items-center mb-3 bg-white rounded mr-2">
        
-    <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="pwd" type="password" placeholder="password" />
+    <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="pwd" name="pwd" onChange={handleChange} required type="password" placeholder="password" />
   </div>
   </div>
   </div>

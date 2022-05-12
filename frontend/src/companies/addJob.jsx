@@ -1,6 +1,9 @@
 import React from 'react'
 
 const addJobs = () => {
+  const handleChange = (e) => {
+    console.log("hello")
+  };
   return (
     <>
   
@@ -18,14 +21,14 @@ const addJobs = () => {
         <label htmlFor="role">Role</label>
         <div className="flex items-center mb-3 bg-white rounded mr-2">
              
-          <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="roll" type="text" placeholder="job title" />
+          <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="roll" name="roll" onChange={handleChange} required type="text" placeholder="job title" />
         </div>
       </div>
       <div>
           <label htmlFor="req">Requirement</label>
           <div className="flex items-center mb-3 bg-white rounded mr-2">
                
-            <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="req" type="text" placeholder="requirement" />
+            <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="req" name="req" onChange={handleChange} required type="text" placeholder="requirement" />
           </div>
         </div>
       

@@ -1,6 +1,9 @@
 import React from 'react'
 
 const addStaff = () => {
+  const handleChange = (e) => {
+    console.log("hello")
+  };
   return (
     <>
   
@@ -19,14 +22,14 @@ const addStaff = () => {
         <label htmlFor="roll">Name</label>
         <div className="flex items-center mb-3 bg-white rounded mr-2">
              
-          <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="name" type="text" placeholder="Name" />
+          <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="name" name="name" onChange={handleChange} required type="text" placeholder="Name" />
         </div>
       </div>
       <div>
           <label htmlFor="batch">Department</label>
           <div className="flex items-center mb-3 bg-white rounded mr-2">
                
-            <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="dept" type="text" placeholder="department" />
+            <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="dept" name="dept" onChange={handleChange} required type="text" placeholder="department" />
           </div>
         </div>
       
@@ -45,7 +48,7 @@ const addStaff = () => {
         <label htmlFor="role">Role</label>
         <div className="flex items-center mb-3 bg-white rounded mr-2">
              
-          <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="role" type="text" placeholder="role" />
+          <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="role" name="role" onChange={handleChange} required type="text" placeholder="role" />
         </div>
       </div>
 
@@ -53,7 +56,7 @@ const addStaff = () => {
           <label htmlFor="qual">Qualification</label>
           <div className="flex items-center mb-3 bg-white rounded mr-2">
                
-            <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="qual" type="text" placeholder="qualification" />
+            <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="qual" name="qual" onChange={handleChange} required type="text" placeholder="qualification" />
           </div>
         </div>
       
@@ -64,7 +67,7 @@ const addStaff = () => {
         <label htmlFor="email">Email</label>
         <div className="flex items-center mb-3 bg-white rounded mr-2">
              
-          <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="email" type="email" placeholder="Email" />
+          <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="email" name="email" onChange={handleChange} required type="email" placeholder="Email" />
         </div>
       </div>
       
@@ -72,7 +75,7 @@ const addStaff = () => {
       <label htmlFor="number">Phone number</label>
   <div className="flex items-center mb-3 bg-white rounded mr-2">
        
-    <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="number" type="text" placeholder="PhoneNumber" />
+    <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="number" name="number" onChange={handleChange} required type="text" placeholder="PhoneNumber" />
   </div>
   </div>
   </div>

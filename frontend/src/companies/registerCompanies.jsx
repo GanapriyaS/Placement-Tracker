@@ -1,6 +1,9 @@
 import React from 'react'
 
 const registerCompanies = () => {
+  const handleChange = (e) => {
+    console.log("hello")
+  };
   return (
     <>
   
@@ -20,14 +23,14 @@ const registerCompanies = () => {
         <label htmlFor="roll">Name</label>
         <div className="flex items-center mb-3 bg-white rounded mr-2">
              
-          <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="name" type="text" placeholder="Name" />
+          <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="name" name="name" onChange={handleChange} required type="text" placeholder="Name" />
         </div>
       </div>
       <div>
       <label for="desc">Description</label>
           <div className="flex items-center mb-3 bg-white rounded mr-2">
                
-          <textarea className="w-full  pl-4 pr-6 py-1 font-bold rounded resize-y rounded-md focus:outline-none bg-white" row="1" id="desc" />
+          <textarea className="w-full  pl-4 pr-6 py-1 font-bold rounded resize-y rounded-md focus:outline-none bg-white" row="1" id="desc" name="desc" onChange={handleChange} required />
           </div>
         </div>
       
@@ -40,7 +43,7 @@ const registerCompanies = () => {
         <label for="email">Email</label>
         <div className="flex items-center mb-3 bg-white rounded mr-2">
              
-          <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="email" type="email" placeholder="Email" />
+          <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="email" name="email" onChange={handleChange} required type="email" placeholder="Email" />
         </div>
       </div>
       
@@ -48,7 +51,7 @@ const registerCompanies = () => {
       <label for="number">Phone number</label>
   <div className="flex items-center mb-3 bg-white rounded mr-2">
        
-    <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="number" type="text" placeholder="PhoneNumber" />
+    <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="number" name="number" onChange={handleChange} required type="text" placeholder="PhoneNumber" />
   </div>
   </div>
   </div>
@@ -59,7 +62,7 @@ const registerCompanies = () => {
   <label for="domain">Domain</label>
   <div className="flex items-center mb-3 bg-white rounded mr-2">
        
-    <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="domain" type="text" placeholder="domain" />
+    <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="domain" name="domain" onChange={handleChange} required type="text" placeholder="domain" />
   </div>
 </div>
   <div className="flex items-center mb-3 ">
@@ -67,7 +70,7 @@ const registerCompanies = () => {
         <label for="package">Package</label>
         <div className="flex items-center mb-3 bg-white rounded mr-2">
              
-          <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="package" type="text" placeholder="package" />
+          <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="package" name="package" onChange={handleChange} required type="text" placeholder="package" />
         </div>
       </div>
 
@@ -75,7 +78,7 @@ const registerCompanies = () => {
           <label for="site">Website</label>
           <div className="flex items-center mb-3 bg-white rounded mr-2">
                
-            <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="site" type="url" placeholder="website" />
+            <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="site" name="site" onChange={handleChange} required type="url" placeholder="website" />
           </div>
         </div>
       

@@ -1,6 +1,9 @@
 import React from 'react'
 
 const editStudentProfile = () => {
+  const handleChange = (e) => {
+    console.log("hello")
+  };
   return (
     <>
   
@@ -19,14 +22,14 @@ const editStudentProfile = () => {
         <label htmlFor="roll">Name</label>
         <div className="flex items-center mb-3 bg-white rounded mr-2">
              
-          <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="name" type="text" placeholder="Name" />
+          <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="name" name="name" onChange={handleChange} required type="text" placeholder="Name" />
         </div>
       </div>
       <div>
           <label htmlFor="batch">Department</label>
           <div className="flex items-center mb-3 bg-white rounded mr-2">
                
-            <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="dept" type="text" placeholder="department" />
+            <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="dept" name="dept" onChange={handleChange} required type="text" placeholder="department" />
           </div>
         </div>
       
@@ -39,14 +42,14 @@ const editStudentProfile = () => {
         <label htmlFor="roll">Roll no.</label>
         <div className="flex items-center mb-3 bg-white rounded mr-2">
              
-          <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="roll" type="text" placeholder="roll no" />
+          <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="roll" name="roll" onChange={handleChange} required type="text" placeholder="roll no" />
         </div>
       </div>
       <div>
           <label htmlFor="batch">Batch</label>
           <div className="flex items-center mb-3 bg-white rounded mr-2">
                
-            <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="batch" type="text" placeholder="batch" />
+            <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="batch" name="batch" onChange={handleChange} required type="text" placeholder="batch" />
           </div>
         </div>
       
@@ -56,14 +59,14 @@ const editStudentProfile = () => {
         <label htmlFor="skills">Skills</label>
         <div className="flex items-center mb-3 bg-white rounded mr-2">
              
-          <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="skills" type="text" placeholder="skills" />
+          <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="skills" name="skills" onChange={handleChange} required type="text" placeholder="skills" />
         </div>
       </div>
       <div>
           <label htmlFor="gpa">GPA</label>
           <div className="flex items-center mb-3 bg-white rounded mr-2">
                
-            <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="gpa" type="text" placeholder="GPA" />
+            <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="gpa" name="gpa" onChange={handleChange} required type="text" placeholder="GPA" />
           </div>
         </div>
       
@@ -75,7 +78,7 @@ const editStudentProfile = () => {
         <label htmlFor="portfolio">Portfolio</label>
         <div className="flex items-center mb-3 bg-white rounded mr-2">
              
-          <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="portfolio" type="url" placeholder="portfolio link" />
+          <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="portfolio" name="portfolio" onChange={handleChange} required type="url" placeholder="portfolio link" />
         </div>
       </div>
       
@@ -84,7 +87,7 @@ const editStudentProfile = () => {
       <label htmlFor="git">Github</label>
   <div className="flex items-center mb-3 bg-white rounded mr-2">
        
-    <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="git" type="url" placeholder="github link" />
+    <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="git" name="git" onChange={handleChange} required type="url" placeholder="github link" />
   </div>
   </div>
  
@@ -92,7 +95,7 @@ const editStudentProfile = () => {
       <label htmlFor="linkedin">Linkedin</label>
   <div className="flex items-center mb-3 bg-white rounded mr-2">
        
-    <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="linkedin" type="url" placeholder="linkedin link" />
+    <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="linkedin" name="linkedin" onChange={handleChange} required type="url" placeholder="linkedin link" />
   </div>
   </div>
   <p className="font-bold">Contact details</p>
@@ -101,7 +104,7 @@ const editStudentProfile = () => {
         <label htmlFor="email">Email</label>
         <div className="flex items-center mb-3 bg-white rounded mr-2">
              
-          <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="email" type="email" placeholder="email" />
+          <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="email" name="email" onChange={handleChange} required type="email" placeholder="email" />
         </div>
       </div>
       
@@ -109,7 +112,7 @@ const editStudentProfile = () => {
       <label htmlFor="number">Phone no</label>
   <div className="flex items-center mb-3 bg-white rounded mr-2">
        
-    <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="number" type="text" placeholder="phone number" />
+    <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="number" name="number" onChange={handleChange} required type="text" placeholder="phone number" />
   </div>
   </div>
   </div>

@@ -1,6 +1,9 @@
 import React from 'react'
 
 const editJob = () => {
+  const handleChange = (e) => {
+    console.log("hello")
+  };
   return (
     <>
   
@@ -18,14 +21,14 @@ const editJob = () => {
         <label htmlFor="role">Role</label>
         <div className="flex items-center mb-3 bg-white rounded mr-2">
              
-          <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="roll" type="text" placeholder="job title" />
+          <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="roll" name="roll" onChange={handleChange} required type="text" placeholder="job title" />
         </div>
       </div>
       <div>
           <label htmlFor="req">Requirement</label>
           <div className="flex items-center mb-3 bg-white rounded mr-2">
                
-            <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="req" type="text" placeholder="requirement" />
+            <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="req" name="req" onChange={handleChange} required type="text" placeholder="requirement" />
           </div>
         </div>
       
@@ -36,7 +39,7 @@ const editJob = () => {
         <label htmlFor="domain">Domain</label>
         <div className="flex items-center mb-3 bg-white rounded mr-2">
              
-          <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="domain" type="text" placeholder="domain" />
+          <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="domain" name="domain" onChange={handleChange} required type="text" placeholder="domain" />
         </div>
       </div>
 
@@ -44,7 +47,7 @@ const editJob = () => {
           <label htmlFor="ldate">Last date to apply</label>
           <div className="flex items-center mb-3 bg-white rounded mr-2">
                
-            <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="ldate" type="date" placeholder="last date" />
+            <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="ldate" name="ldate" onChange={handleChange} required type="date" placeholder="last date" />
           </div>
         </div>
       
@@ -53,8 +56,8 @@ const editJob = () => {
       <div>
         <label htmlFor="type">Type</label>
         <div className="flex items-center mb-3 bg-white rounded mr-2">
-             
-          <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="type" type="text" placeholder="intern/full-time" />
+
+          <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="type" name="type" onChange={handleChange} required type="text" placeholder="intern/full-time" />
         </div>
       </div>
       
@@ -62,7 +65,7 @@ const editJob = () => {
       <label htmlFor="mode">Mode</label>
   <div className="flex items-center mb-3 bg-white rounded mr-2">
        
-    <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="mode" type="text" placeholder="online/offline" />
+    <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="mode" name="mode" onChange={handleChange} required type="text" placeholder="online/offline" />
   </div>
   </div>
   </div>
