@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 const viewCompanies = () => {
+    const [companies, getCompanies] = useState('');
   return (
     <div className=" p-4 pt-10 w-full h-screen  ">
         <div className="flex justify-center pb-5">

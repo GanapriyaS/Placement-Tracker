@@ -11,23 +11,24 @@ const {
     viewcompanies,
 } = require('./../controllers/adminController.js')
 
-const { admin } = require('../middleware/authMiddleware.js')
+// const { admin } = require('../middleware/authMiddleware.js')
 
 router
     .route('/')
-    .get(admin,viewcompanies)
+    // .get(viewcompanies)
+    .get(viewcompanies)
 
 router
     .route('/approve/:id')
-    .post(admin,approvecompany)
+    .post(approvecompany)
 
 router
     .route('/disapprove/:id')
-    .put(admin, disapprovecompany)
+    .put( disapprovecompany)
 
 router
     .route('/staff/:id')
-    .delete(admin, deletestaff)
+    .delete( deletestaff)
     .put(editstaff)
 
 router
