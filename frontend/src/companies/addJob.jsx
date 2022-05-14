@@ -35,7 +35,9 @@ const handleSubmit = (e) => {
     type:type,
     mode:mode
     }
-   const url="http://localhost:5000/company/"+msg+"/job"
+
+   const env=process.env.NODE_ENV;
+const url = env === 'production'?  "https://placement-tracker-swart.vercel.app/company/"+msg+"/job": "http://localhost:5000/company/"+msg+"/job"
     axios.post(url, data).then(res => {
       setJob({  role: '',
       requ: '',

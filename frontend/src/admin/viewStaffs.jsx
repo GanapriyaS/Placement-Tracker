@@ -4,8 +4,9 @@ import { Link } from 'react-router-dom'
 
 const ViewStaffs = () => {
     const [staffs, getStaffs] = useState([]);
-    // const url = "https://placement-tracker-swart.vercel.app/admin/";
-    const url = "http://localhost:5000/admin/staff/";
+    const env=process.env.NODE_ENV;
+    const url = env === 'production'?  "https://placement-tracker-swart.vercel.app/admin/staff/": "http://localhost:5000/admin/staff/"
+
     const getAllStaffs = () =>{
         axios.get(url, { headers: {
             'Content-Type': 'application/json',

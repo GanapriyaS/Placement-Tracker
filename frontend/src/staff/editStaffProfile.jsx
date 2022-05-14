@@ -48,7 +48,9 @@ const [msg, setMsg] = useState('');
       email:email,
       number:phoneno
       }
-      const url = "http://localhost:5000/staff/"+ staff.id
+      const env=process.env.NODE_ENV;
+    const url = env === 'production'?  "https://placement-tracker-swart.vercel.app/staff/"+ staff.id: "http://localhost:5000/staff/"+ staff.id
+        
       axios.put(url, data).then(res => {
         setStaff({ name: '', dept: '',job:'',qualification:'',email:'',phoneno:'' });
         setLoading(false);

@@ -15,7 +15,10 @@ const Login = ({ setToken }) => {
       password: password,
       type:type
     }
-    axios.post('http://localhost:5000/login', data).then(res => {
+    const env=process.env.NODE_ENV;
+    const url = env === 'production'?  "https://placement-tracker-swart.vercel.app/login": "http://localhost:5000/login"
+        
+    axios.post(url, data).then(res => {
          console.log(res.data)
       setToken(res.data.token);
      

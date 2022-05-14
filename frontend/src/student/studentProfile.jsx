@@ -10,9 +10,9 @@ const StudentProfile = (props) => {
   const {auth,kind,msg} = useContext(LoginContext);
   console.log(auth,kind,msg)
   
-const [profile, getProfile] = useState([]);
-    // const url = "https://placement-tracker-swart.vercel.app/admin/";
-    const url = "http://localhost:5000/company/" + params.student;
+const [profile, getProfile] = useState([]);const env=process.env.NODE_ENV;
+const url = env === 'production'?  "https://placement-tracker-swart.vercel.app/student"+ params.student: "http://localhost:5000/student"+ params.student
+
     console.log(url)
     const getAllProfile = () =>{
         axios.get(url, { headers: {

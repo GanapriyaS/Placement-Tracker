@@ -10,9 +10,7 @@ const ViewJobs = () => {
 
 const [jobs, getJobs] = useState([]);
 const env=process.env.NODE_ENV;
-
-    // const url = "https://placement-tracker-swart.vercel.app/admin/";
-    const url = env === 'production'?  "https://placement-tracker-swart.vercel.app/company/"+msg+"/job": "http://localhost:5000/company/"+msg+"/job"
+const url = env === 'production'?  "https://placement-tracker-swart.vercel.app/company/"+msg+"/job": "http://localhost:5000/company/"+msg+"/job"
 
     console.log(url)
     const getAllJobs = () =>{

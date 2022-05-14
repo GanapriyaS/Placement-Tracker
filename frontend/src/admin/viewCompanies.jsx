@@ -3,8 +3,10 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 const ViewCompanies = () => {
     const [companies, getCompanies] = useState([]);
-    // const url = "https://placement-tracker-swart.vercel.app/admin/";
-    const url = "http://localhost:5000/admin/";
+    const env=process.env.NODE_ENV;
+    const url = env === 'production'?  "https://placement-tracker-swart.vercel.app/admin/": "http://localhost:5000/admin/"
+
+   
     const getAllCompanies = () =>{
         axios.get(url, { headers: {
             'Content-Type': 'application/json',

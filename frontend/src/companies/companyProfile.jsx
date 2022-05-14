@@ -11,8 +11,8 @@ const CompanyProfile = (props) => {
   console.log(auth,kind,msg)
 
 const [profile, getProfile] = useState([]);
-    // const url = "https://placement-tracker-swart.vercel.app/admin/";
-    const url = "http://localhost:5000/company/" + params.company;
+const env=process.env.NODE_ENV;
+const url = env === 'production'?  "https://placement-tracker-swart.vercel.app/company/" + params.company: "http://localhost:5000/company/" + params.company
     console.log(url)
     const getAllProfile = () =>{
         axios.get(url, { headers: {

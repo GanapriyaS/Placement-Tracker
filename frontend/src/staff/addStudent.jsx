@@ -26,8 +26,10 @@ const handleSubmit = (e) => {
       role:roll,
       batch:batch
     }
-   
-    axios.post('http://localhost:5000/staff/student', data).then(res => {
+    const env=process.env.NODE_ENV;
+    const url = env === 'production'?  "https://placement-tracker-swart.vercel.app/staff/student": "http://localhost:5000/staff/student"
+        
+    axios.post(url, data).then(res => {
       setStudents({ name: '', dept: '',roll:'',batch:'' });
       setLoading(false);
       console.log(res.status)

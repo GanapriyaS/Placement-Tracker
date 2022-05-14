@@ -10,8 +10,10 @@ const StaffProfile = (props) => {
   console.log(auth,kind,msg)
   
 const [profile, getProfile] = useState([]);
-    // const url = "https://placement-tracker-swart.vercel.app/admin/";
-    const url = "http://localhost:5000/staff/" + params.staff;
+const env=process.env.NODE_ENV;
+const url = env === 'production'?  "https://placement-tracker-swart.vercel.app/staff/" + params.staff: "http://localhost:5000/staff/" + params.staff
+
+  
     console.log(url)
     const getAllProfile = () =>{
         axios.get(url, { headers: {

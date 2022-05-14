@@ -47,7 +47,9 @@ if (name && dept && rollno && batch && id) {
     rollno:rollno,
     batch:batch
   }
-  const url = "http://localhost:5000/staff/student/"+ student.id
+  const env=process.env.NODE_ENV;
+  const url = env === 'production'?  "https://placement-tracker-swart.vercel.app/staff/student/"+ student.id: "http://localhost:5000/staff/student/"+ student.id
+
   axios.put(url, data).then(res => {
     setStudent({ name: '', dept: '',rollno:'',batch:'' });
     setLoading(false);

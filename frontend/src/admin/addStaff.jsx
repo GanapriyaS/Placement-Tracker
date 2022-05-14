@@ -31,8 +31,11 @@ const handleSubmit = (e) => {
     email:email,
     number:number
     }
-   
-    axios.post('http://localhost:5000/admin/staff', data).then(res => {
+    const [profile, getProfile] = useState([]);
+    const env=process.env.NODE_ENV;
+    const url = env === 'production'?  "https://placement-tracker-swart.vercel.app/admin/staff": "http://localhost:5000/admin/staff"
+    
+    axios.post(url, data).then(res => {
       setStaff({ name: '', dept: '',role:'',qual:'',email:'',number:'' });
       setLoading(false);
       console.log(res.status)

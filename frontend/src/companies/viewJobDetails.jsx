@@ -12,8 +12,9 @@ const ViewJobDetails = (props) => {
   console.log(auth,kind,msg)
 
 const [jobs, getJobs] = useState([]);
-    // const url = "https://placement-tracker-swart.vercel.app/admin/";
-    const url = "http://localhost:5000/company/"+msg+"/job/"+params.job
+const env=process.env.NODE_ENV;
+const url = env === 'production'?  "https://placement-tracker-swart.vercel.app/company/"+msg+"/job/"+params.job: "http://localhost:5000/company/"+msg+"/job/"+params.job
+
     console.log(url)
     const getAllJobs = () =>{
         axios.get(url, { headers: {
