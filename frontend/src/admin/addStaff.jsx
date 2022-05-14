@@ -31,7 +31,7 @@ const handleSubmit = (e) => {
     email:email,
     number:number
     }
-    const [profile, getProfile] = useState([]);
+  
     const env=process.env.NODE_ENV;
     const url = env === 'production'?  "https://placement-tracker-swart.vercel.app/admin/staff": "http://localhost:5000/admin/staff"
     
