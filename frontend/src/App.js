@@ -52,7 +52,9 @@ const getToken = () =>{
     const data = {
       id:tokenString.slice(1,-1)
      }
-     axios.post('http://localhost:5000/auth', data)
+     const env=process.env.NODE_ENV;
+     const url = env === 'production'?  "https://placement-tracker-swart.vercel.app/auth": "http://localhost:5000/auth"
+     axios.post(url, data)
      .then((res) => {
        console.log(res)
        if(res.data.auth === true){
