@@ -3,7 +3,6 @@ const jwt = require("jsonwebtoken")
 const login = async (req,res) => {
 
     const {username,password,type} = req.body;
-    console.log(req.body)
     try {
         const results = await client.query("SELECT * FROM login WHERE username=$1 and pass=$2 and type=$3", [username,password,type]);
         if(results.rowCount > 0){
@@ -37,7 +36,7 @@ const auth = async (req,res) => {
     decode = jwt.verify(token, 'vscode');
 
         req.data = decode.data;
-        console.log(decode)
+       
         res.status(200).json({auth:true, message:"success",data:decode.data});
       }
     
@@ -77,7 +76,8 @@ const companyregister = async (req,res) => {
 
 const getalljobs = async (req,res) => {
     try {
-        const results = await client.query("SELECT * FROM jobs");
+        const results = await client.query("SELECT  jobs.*, company.name as companyname FROM jobs INNER JOIN company ON jobs.companyname=company.id");
+ 
         res.status(200).json(results.rows);
       } catch (err) {
         console.log(err)

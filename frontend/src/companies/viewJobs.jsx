@@ -124,7 +124,7 @@ const url = env === 'production'?  "https://placement-tracker-swart.vercel.app/c
     </a>
 </td>
 <td className="px-5 py-5 border-b border-gray-200 text-sm">
-<Link to="/companies/jobs/edit">
+<Link to="/companies/jobs/edit" state={{data:job}}>
         <span className="relative inline-block px-3 py-1 font-semibold text-blue-900 leading-tight">
             <span aria-hidden className="absolute inset-0 bg-blue-200 rounded-xl"></span>
             <span className="relative"><i className='bx bx-edit-alt bx-xs'></i></span>
