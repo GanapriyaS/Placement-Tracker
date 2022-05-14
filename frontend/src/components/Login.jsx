@@ -1,6 +1,32 @@
-import React from 'react'
+import React,{useState} from 'react'
+import axios from 'axios'
 
-const Login = () => {
+const Login = ({ setToken }) => {
+  const [username, setUserName] = useState();
+  const [password, setPassword] = useState();
+  const [type, setType] = useState();
+ 
+
+
+  const handleSubmit = async e => {
+    e.preventDefault();
+    const data = {
+      username: username,
+      password: password,
+      type:type
+    }
+    axios.post('http://localhost:5000/login', data).then(res => {
+         console.log(res.data)
+      setToken(res.data.token);
+     
+    }).catch(err => {
+      console.log(err)
+     
+    });
+   
+    
+  }
+
   return (
     <div className="grid lg:grid-cols-2 grid-cols-1 gap-0  lg:min-h-screen  "> 
         <div className="bg-black w-26 lg:min-h-screen py-10 lg:py-0 flex items-center justify-center px-3 lg:px=0">
@@ -14,35 +40,33 @@ const Login = () => {
             </p></div> 
         </div>
         <div className="bg-white   lg:min-h-screen flex items-center justify-center"> 
-        <form className="lg:px-10 lg:py-0 py-5 px-5" action="#">
+        <form className="lg:px-10 lg:py-0 py-5 px-5" onSubmit={handleSubmit}>
             <h3 className="mb-10 text-2xl text-black font-bold font-heading text-center">Authorized Login</h3>
             <div className="flex items-center mb-3 bg-white rounded">
            
-              <input className="w-full pl-4 pr-6 py-4 font-bold placeholder-gray-900 rounded focus:outline-none bg-gray-200" type="email" placeholder="Email"/>
+              <input className="w-full pl-4 pr-6 py-4 font-bold placeholder-gray-900 rounded focus:outline-none bg-gray-200" type="text" onChange={e => setUserName(e.target.value)} required placeholder="Username"/>
             </div>
             <div className="flex items-center  mb-3 bg-white rounded">
              
-              <input className="w-full pl-4 pr-6 py-4 font-bold placeholder-gray-900 rounded focus:outline-none bg-gray-200" type="password" placeholder="Password"/>
+              <input className="w-full pl-4 pr-6 py-4 font-bold placeholder-gray-900 rounded focus:outline-none bg-gray-200" type="password"  onChange={e => setPassword(e.target.value)} required placeholder="Password"/>
             </div>
             <div className="dropdown inline-block relative w-full mb-3">
-    <button className="w-full pl-4 pr-6 py-4 font-bold placeholder-gray-900 rounded focus:outline-none bg-gray-200 rounded inline-flex items-center pr-5">
-      <span className="mr-1 pr-5">User</span>
-      <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/> </svg>
-    </button>
-    <ul className="dropdown-menu absolute hidden text-gray-700 pt-1">
-      <li className=""><p className="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-8 block whitespace-no-wrap">Students</p></li>
-      <li className=""><p className="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-8 block whitespace-no-wrap">Staffs</p></li>
-      <li className=""><p className="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-8 block whitespace-no-wrap">Companies</p></li>
-      <li className=""><p className="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-8 block whitespace-no-wrap">Admin</p></li>
-    </ul>
+            <select className="w-full pl-4 pr-6 py-4 font-bold placeholder-gray-900 rounded focus:outline-none bg-gray-200" name="type" id="type" onChange={e => setType(e.target.value)}>
+          <option value="select" selected disabled hidden>Select type</option>
+            <option value="student">student</option>
+            <option value="staff">staff</option>
+            <option value="company">company</option>
+            <option value="admin">admin</option>
+          </select>
   </div>
             
-            <button className="py-4 w-full bg-black hover:bg-black-600 text-white font-bold rounded transition duration-200">Login</button>
+            <button type="submit" className="py-4 w-full bg-black hover:bg-black-600 text-white font-bold rounded transition duration-200">Login</button>
           </form>
         </div> 
         
     </div>
   )
 }
+
 
 export default Login

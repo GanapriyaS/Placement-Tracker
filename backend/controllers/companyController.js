@@ -48,7 +48,7 @@ const viewapplicants = async (req,res) => {
 const viewcompanyprofile = async (req,res) => {
     try {
         const results = await client.query("SELECT * FROM company where id=$1", [req.params.id]);
-        res.status(200).json(results.rows);
+        res.status(200).json(results.rows[0]);
       } catch (err) {
         console.log(err)
         res.status(500).json({"msg":"Server Error"})
@@ -115,8 +115,11 @@ const editjob =  async (req,res) => {
 
 const viewjobdetails = async (req,res) => {
     try {
-        const results = await client.query("SELECT * FROM jobs where id=$1", [req.params.jobid]);
-        res.status(200).json(results.rows);
+        const result1 = await client.query("SELECT  jobs.*, company.name as companyname,company.website,company.description  FROM jobs INNER JOIN company ON jobs.companyname=company.id WHERE jobs.id=$1", [req.params.jobid]);
+        // const result2 = await client.query("SELECT name FROM company where id=$1", [req.params.id]);
+        // result1.rows[0].company=result2.rows[0]
+        console.log(result1.rows)
+        res.status(200).json(result1.rows[0]);
       } catch (err) {
         console.log(err)
         res.status(500).json({"msg":"Server Error"})

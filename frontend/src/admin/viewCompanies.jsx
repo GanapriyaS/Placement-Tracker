@@ -1,7 +1,29 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
 import { Link } from 'react-router-dom'
-const viewCompanies = () => {
-    const [companies, getCompanies] = useState('');
+const ViewCompanies = () => {
+    const [companies, getCompanies] = useState([]);
+    // const url = "https://placement-tracker-swart.vercel.app/admin/";
+    const url = "http://localhost:5000/admin/";
+    const getAllCompanies = () =>{
+        axios.get(url, { headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
+          },params: {
+            approval:true
+          }})
+        .then((response) => {
+            const allCompanies = response.data
+            getCompanies(allCompanies);
+        })
+        .catch(err => console.error(err));
+    }
+
+    useEffect(() => {
+        getAllCompanies();
+    }, [])
+
+
   return (
     <div className=" p-4 pt-10 w-full h-screen  ">
         <div className="flex justify-center pb-5">
@@ -54,122 +76,46 @@ const viewCompanies = () => {
     </td>
     
 </tr>   
-                            
-<tr className="bg-gray-600 text-gray-200">
-    <td className="px-5 py-5 border-b  border-gray-200 text-sm">
-        <p className="whitespace-no-wrap">1</p>
-    </td>
-    <td className="px-5 py-5 border-b border-gray-200 text-red-500 text-sm line-through">
-        <p className="whitespace-no-wrap"> task.title </p>
-    </td>
-    <td className="px-5 py-5 border-b border-gray-200  text-sm">
-        <p className="whitespace-no-wrap">
-             tadsfasdklf 
-        </p>
-    </td>
-    
-   
-    
-    <td className="px-5 py-5 border-b border-gray-200 text-sm">
-        <a href="/delete-task/task.id">
-            <span className="relative inline-block px-3 py-1 font-semibold text-red-900 leading-tight">
-                <span aria-hidden className="absolute inset-0 bg-red-200 rounded-xl"></span>
-                <span className="relative"><i className='bx bx-trash-alt bx-xs'></i></span>
-            </span>
-        </a>
-    </td>
-    
-    <td className="px-5 py-5 border-b border-gray-200 text-sm ">
-        <Link to="/companies/profile">
-            <span className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                <span aria-hidden className="absolute inset-0 bg-green-200  rounded-xl"></span>
-                <span className="relative"><i className='bx bx-award bx-xs'></i></span>
-            </span>
-        </Link>
-    </td>
-    
-</tr>
-                             
-                            
-                            <tr className="bg-gray-600 text-gray-200">
-                                <td className="px-5 py-5 border-b border-gray-200 text-sm">
-                                    <p className="whitespace-no-wrap">2</p>
-                                </td>
-                                <td className="px-5 py-5 border-b border-gray-200  text-sm">
-                                    <p className="whitespace-no-wrap"> task.title </p>
-                                </td>
-                                <td className="px-5 py-5 border-b border-gray-200  text-sm">
-                                    <p className="whitespace-no-wrap">
-                                         task.created_date 
-                                    </p>
-                                </td>
-                                
-   
-                                <td className="px-5 py-5 border-b border-gray-200 text-sm">
-                                    <a href="/delete-task/task.id"  >
-                                        <span
-                                            className="relative inline-block px-3 py-1 font-semibold text-red-900 leading-tight">
-                                            <span aria-hidden className="absolute inset-0 bg-red-200 rounded-xl"></span>
-                                            <span className="relative"><i className='bx bx-trash-alt bx-xs'></i></span>
-                                        </span>
-                                    </a>
-                                </td>
-                                
-                                <td className="px-5 py-5 border-b border-gray-200 text-sm">
-                                    <a href="/complete_task/task.id">
-                                        <span
-                                            className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                                            <span aria-hidden
-                                                className="absolute inset-0 bg-green-200  rounded-xl"></span>
-                                            <span className="relative"><i className='bx bx-award bx-xs'></i></span>
-                                        </span>
-                                    </a>
-                                </td>
-                                
-                            </tr>
-                            
-                            <tr className="px-5 py-5 border-b border-gray-200 bg-white text-sm ">
-                                <td colSpan="9" className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <div className="flex flex-col xs:flex-row items-center xs:justify-between          ">
-                                        <span className="text-xs xs:text-sm text-gray-900">
-                                            No students added yet
-                                        </span>
-
-                                    </div>
-                                </td>
-                            </tr>
-
-                            <tr className=" border-b border-gray-200 bg-white text-sm ">
-                                <td colSpan="9" >
-                                   
-                                <div
-                        className="px-5 py-5 bg-gray-100 flex flex-col xs:flex-row items-center xs:justify-between          ">
-                        <div className="inline-flex xs:mt-0">
-
-                              
-                            <a className=" text-sm px-4 py-2 font-semibold text-gray-800 bg-gray-300 hover:bg-gray-400 rounded-l hover:text-white"
-                                href="?page=1">&laquo; 1</a>
-                            <a className=" text-sm px-4 py-2 font-semibold text-gray-800 bg-gray-300 hover:bg-gray-400 rounded-r hover:text-white"
-                                href="?page= page_obj.previous_page_number ">prev</a>
-                            &nbsp;
-                              
-
-                          
-
-                            
-                            <a className=" text-sm px-4 py-2 font-semibold text-gray-800 bg-gray-300 hover:bg-gray-400 rounded-l hover:text-white"
-                                href="?page= page_obj.next_page_number ">next</a>
-                            <a className=" text-sm px-4 py-2 font-semibold text-gray-800 bg-gray-300 hover:bg-gray-400 rounded-r hover:text-white"
-                                href="?page= page_obj.paginator.num_pages ">last &raquo;</a>
-                            
-                        </div>
-
-                    </div>
-
-                                    
-                                </td>
-                            </tr>
-                             
+{companies.map((company,index) => {
+          const { id, name, department} = company;
+          return (
+            <tr className="bg-gray-600 text-gray-200" key={id}>
+            <td className="px-5 py-5 border-b  border-gray-200 text-sm">
+                <p className="whitespace-no-wrap">{index + 1}</p>
+            </td>
+            <td className="px-5 py-5 border-b border-gray-200  text-sm ">
+                <p className="whitespace-no-wrap">{name} </p>
+            </td>
+            <td className="px-5 py-5 border-b border-gray-200  text-sm">
+                <p className="whitespace-no-wrap">
+                    {department}
+                </p>
+            </td>
+            
+           
+            
+            <td className="px-5 py-5 border-b border-gray-200 text-sm">
+                <a href="/delete-task/task.id">
+                    <span className="relative inline-block px-3 py-1 font-semibold text-red-900 leading-tight">
+                        <span aria-hidden className="absolute inset-0 bg-red-200 rounded-xl"></span>
+                        <span className="relative"><i className='bx bx-trash-alt bx-xs'></i></span>
+                    </span>
+                </a>
+            </td>
+            
+            <td className="px-5 py-5 border-b border-gray-200 text-sm ">
+                <Link to="/companies/profile">
+                    <span className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
+                        <span aria-hidden className="absolute inset-0 bg-green-200  rounded-xl"></span>
+                        <span className="relative"><i className='bx bx-award bx-xs'></i></span>
+                    </span>
+                </Link>
+            </td>
+            
+        </tr>
+            
+          );
+        })}     
                         </tbody>
                       
                     </table>
@@ -180,4 +126,4 @@ const viewCompanies = () => {
   )
 }
 
-export default viewCompanies
+export default ViewCompanies

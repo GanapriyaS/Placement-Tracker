@@ -1,6 +1,7 @@
-import React from 'react'
+import React,{useContext} from 'react'
 
-const header = () => {
+const Header = () => {
+  
   return (
     <nav className="fixed z-30 w-full bg-white border-b-2 bg-white">
         <div className="px-6 py-4">
@@ -24,4 +25,4 @@ const header = () => {
   )
 }
 
-export default header
+export default Header

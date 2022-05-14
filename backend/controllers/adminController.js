@@ -1,7 +1,9 @@
 const client= require('../config/db.js');
 const uuid = require('uuid');
+
 const viewcompanies = async (req,res) => {
-    const { approval } = req.body
+    const { approval } = req.query
+    console.log(approval)
     try {
             const results = await client.query("SELECT * FROM company where approval=$1",[approval]);
             res.status(200).json(results.rows);
@@ -135,5 +137,6 @@ module.exports = {
     editstaff,
     approvecompany,
     disapprovecompany,
+    
     viewcompanies,
 }

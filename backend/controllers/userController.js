@@ -3,13 +3,14 @@ const jwt = require("jsonwebtoken")
 const login = async (req,res) => {
 
     const {username,password,type} = req.body;
+    console.log(req.body)
     try {
         const results = await client.query("SELECT * FROM login WHERE username=$1 and pass=$2 and type=$3", [username,password,type]);
         if(results.rowCount > 0){
             const id = results.rows[0].key
 
-            console.log(id)
-            const token =jwt.sign({id}, "vscode", {
+            const data = { id:id, type:results.rows[0].type}
+            const token =jwt.sign({data}, "vscode", {
                 expiresIn: '30d'
             });
               res.status(200).json({auth:true, token :token, result:results.rows});
@@ -27,18 +28,20 @@ const home = async (req,res) => {
 }
 const auth = async (req,res) => {
     const token = req.body.id
-  // console.log(token);
+    let decode='';
+  
   if(!token){
     res.status(400).json({auth:false, message:"fails"});
   }
   else{
-    const decode = jwt.verify(token, 'vscode');
+    decode = jwt.verify(token, 'vscode');
 
-        req.data = decode.id;
+        req.data = decode.data;
         console.log(decode)
+        res.status(200).json({auth:true, message:"success",data:decode.data});
       }
     
-    res.status(200).json({auth:true, message:"success",data:req.data});
+    
   }
 
 

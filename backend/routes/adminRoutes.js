@@ -15,7 +15,6 @@ const {
 
 router
     .route('/')
-    // .get(viewcompanies)
     .get(viewcompanies)
 
 router

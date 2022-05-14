@@ -1,6 +1,7 @@
 import React from 'react'
 import StudentDetails from '../student/studentDetails'
 const Home = () => {
+  
   return (
     <>
   

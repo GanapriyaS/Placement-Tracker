@@ -1,6 +1,28 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
 import { Link } from 'react-router-dom'
-const studentDetails = () => {
+const StudentDetails = () => {
+
+    const [students, getStudents] = useState([]);
+    // const url = "https://placement-tracker-swart.vercel.app/admin/";
+    const url = "http://localhost:5000/student";
+    const getAllStudents = () =>{
+        axios.get(url, { headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
+          }})
+        .then((response) => {
+            const allStudents = response.data
+            console.log(allStudents)
+            getStudents(allStudents);
+        })
+        .catch(err => console.error(err));
+    }
+
+    useEffect(() => {
+        getAllStudents();
+    }, [])
+
   return (
     <div className="w-full p-4 h-auto lg:h-screen pt-8 overflow-y-auto mt-6 px-10 ">
         <a href="/#" className="flex justify-center items-center text-3xl lg:text-4xl font-bold mb-6">
@@ -59,16 +81,20 @@ const studentDetails = () => {
     
 </tr>   
 
-<tr className="bg-gray-600 text-gray-200">
+{students.map((student,index) => {
+          const { id, name, dept,skill} =student;
+          return (
+
+            <tr className="bg-gray-600 text-gray-200" key={id}>
     <td className="px-5 py-5 border-b  border-gray-200 text-sm">
-        <p className="whitespace-no-wrap">1</p>
+        <p className="whitespace-no-wrap">{index+1}</p>
     </td>
     <td className="px-5 py-5 border-b border-gray-200 text-red-500 text-sm line-through">
-        <p className="whitespace-no-wrap"> task.title </p>
+        <p className="whitespace-no-wrap"> {name} </p>
     </td>
     <td className="px-5 py-5 border-b border-gray-200  text-sm">
         <p className="whitespace-no-wrap">
-             tadsfasdklf 
+            {dept}
         </p>
     </td>
     
@@ -76,7 +102,7 @@ const studentDetails = () => {
     
     <td className="px-5 py-5 border-b border-gray-200  text-sm">
         <p className="whitespace-no-wrap">
-             tadsfasdklf 
+             {skill}
         </p>
     </td>
     
@@ -92,51 +118,18 @@ const studentDetails = () => {
         <a href="/detail-task/task.id">
             <span className="relative inline-block px-3 py-1 font-semibold text-blue-900 leading-tight">
                 <span aria-hidden className="absolute inset-0 bg-blue-200  rounded-xl"></span>
-                <span className="relative"><i class='bx bxs-conversation'></i></span>
+                <span className="relative"><i className='bx bxs-conversation'></i></span>
             </span>
         </a>
     </td>
 </tr>
+           
+          );
+        })}    
+
                              
                             
-                            <tr className="bg-gray-600 text-gray-200">
-                                <td className="px-5 py-5 border-b border-gray-200 text-sm">
-                                    <p className="whitespace-no-wrap">2</p>
-                                </td>
-                                <td className="px-5 py-5 border-b border-gray-200  text-sm">
-                                    <p className="whitespace-no-wrap"> task.title </p>
-                                </td>
-                                <td className="px-5 py-5 border-b border-gray-200  text-sm">
-                                    <p className="whitespace-no-wrap">
-                                         task.created_date 
-                                    </p>
-                                </td>
-                                
-   
-                                <td className="px-5 py-5 border-b border-gray-200  text-sm">
-        <p className="whitespace-no-wrap">
-             tadsfasdklf 
-        </p>
-    </td>
-                                
-    <td className="px-5 py-5 border-b border-gray-200 text-sm">
-        <a href="/detail-task/task.id">
-            <span className="relative inline-block px-3 py-1 font-semibold text-yellow-900 leading-tight">
-                <span aria-hidden className="absolute inset-0 bg-yellow-200  rounded-xl"></span>
-                <span className="relative"><i className='bx bx-comment-detail bx-xs'></i></span>
-            </span>
-        </a>
-    </td>
-    <td className="px-5 py-5 border-b border-grey-200 text-sm">
-        <a href="/detail-task/task.id">
-            <span className="relative inline-block px-3 py-1 font-semibold text-blue-900 leading-tight">
-                <span aria-hidden className="absolute inset-0 bg-blue-200  rounded-xl"></span>
-                <span className="relative"><i class='bx bxs-conversation'></i></span>
-            </span>
-        </a>
-    </td>
-                                
-                            </tr>
+                           
                             
                             <tr className="px-5 py-5 border-b border-gray-200 bg-white text-sm ">
                                 <td colSpan="9" className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
@@ -189,4 +182,4 @@ const studentDetails = () => {
   )
 }
 
-export default studentDetails
+export default StudentDetails

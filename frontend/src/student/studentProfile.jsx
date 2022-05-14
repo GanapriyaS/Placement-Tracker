@@ -1,6 +1,36 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
-const studentProfile = () => {
+import React,{useContext, useState, useEffect} from 'react';
+import {Link, useParams} from 'react-router-dom';
+import {LoginContext} from '../App.js';
+import axios from 'axios'
+
+
+const StudentProfile = (props) => {
+  const params = useParams();
+    console.log(params.student)
+  const {auth,kind,msg} = useContext(LoginContext);
+  console.log(auth,kind,msg)
+  
+const [profile, getProfile] = useState([]);
+    // const url = "https://placement-tracker-swart.vercel.app/admin/";
+    const url = "http://localhost:5000/company/" + params.student;
+    console.log(url)
+    const getAllProfile = () =>{
+        axios.get(url, { headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
+          }})
+        .then((response) => {
+            const allProfile = response.data
+            console.log(allProfile)
+            getProfile(allProfile);
+        })
+        .catch(err => console.error(err));
+    }
+
+    useEffect(() => {
+        getAllProfile();
+    }, [])
+
   return (
     <>
   
@@ -26,14 +56,14 @@ const studentProfile = () => {
         <label htmlFor="roll">Name</label>
         <div className="flex items-center mb-3 rounded mr-2 shadow-lg shadow-white rounded">
              
-          <p className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none" id="name">Ram Lakhan</p>
+          <p className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none" id="name">{profile.name}</p>
         </div>
       </div>
       <div>
           <label htmlFor="batch">Department</label>
           <div className="flex items-center mb-3 rounded mr-2 shadow-lg shadow-white rounded">
                
-            <p className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none" id="dept" >computer Science and Engineering</p>
+            <p className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none" id="dept" >{profile.dept}</p>
           </div>
         </div>
       
@@ -46,14 +76,14 @@ const studentProfile = () => {
         <label htmlFor="roll">Roll no.</label>
         <div className="flex items-center mb-3 rounded mr-2 shadow-lg shadow-white rounded">
              
-          <p className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none" id="roll">12334</p>
+          <p className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none" id="roll">{profile.rollno}</p>
         </div>
       </div>
       <div>
           <label htmlFor="batch">Batch</label>
           <div className="flex items-center mb-3 rounded mr-2 shadow-lg shadow-white rounded">
                
-            <p className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none">2023</p>
+            <p className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none">{profile.batch}</p>
           </div>
         </div>
       
@@ -62,13 +92,7 @@ const studentProfile = () => {
       <div>
         <label htmlFor="skills">Skills</label>
         <div className="flex items-center mb-3 rounded mr-2 shadow-lg shadow-white rounded">
-             
-          <ul className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none" id="skills" >
-            <li className='px-2'>Machine Learning</li>
-            <li className='px-2'>Frontend</li>
-            <li className='px-2'>Backend</li>
-            <li className='px-2'>Data Analytics</li>
-          </ul>
+        <p className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none">{profile.skill}</p>
         </div>
       </div>
  
@@ -78,14 +102,14 @@ const studentProfile = () => {
           <label htmlFor="gpa">GPA</label>
           <div className="flex items-center mb-3 rounded mr-2 shadow-lg shadow-white rounded">
                
-            <p className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none" id="gpa">9.2 </p>
+            <p className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none" id="gpa">{profile.cgpa}</p>
           </div>
         </div>
       <div>
         <label htmlFor="portfolio">Portfolio</label>
         <div className="flex items-center mb-3 rounded mr-2 shadow-lg shadow-white rounded">
              
-          <p className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none" id="portfolio">ramlakshan.com</p>
+          <p className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none" id="portfolio">{profile.portfolio}</p>
         </div>
       </div>
       
@@ -94,7 +118,7 @@ const studentProfile = () => {
       <label htmlFor="git">Github</label>
   <div className="flex items-center mb-3 rounded mr-2 shadow-lg shadow-white rounded">
        
-    <p className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none" id="git">@ramlakshangit</p>
+    <p className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none" id="git">{profile.github}</p>
   </div>
   </div>
  
@@ -102,7 +126,7 @@ const studentProfile = () => {
       <label htmlFor="linkedin">Linkedin</label>
   <div className="flex items-center mb-3 rounded mr-2 shadow-lg shadow-white rounded">
        
-    <p className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none" id="linkedin" >@ramlakshan</p>
+    <p className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none" id="linkedin" >{profile.linkedin}</p>
   </div>
   </div>
   <p className="font-bold">Contact details</p>
@@ -111,7 +135,7 @@ const studentProfile = () => {
         <label htmlFor="email">Email</label>
         <div className="flex items-center mb-3 rounded mr-2 shadow-lg shadow-white rounded">
              
-          <p className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none" id="email" >ramlakshan@gct.ac.in</p>
+          <p className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none" id="email" >{profile.email}</p>
         </div>
       </div>
       
@@ -119,7 +143,7 @@ const studentProfile = () => {
       <label htmlFor="number">Phone no</label>
   <div className="flex items-center mb-3 rounded mr-2 shadow-lg shadow-white rounded">
        
-    <p className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none" id="number" >3494093204</p>
+    <p className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none" id="number" >{profile.phoneno}</p>
   </div>
   </div>
   </div>
@@ -130,4 +154,4 @@ const studentProfile = () => {
   )
 }
 
-export default studentProfile
+export default StudentProfile

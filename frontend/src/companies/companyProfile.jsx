@@ -1,6 +1,36 @@
-import React from 'react'
-import {Link} from 'react-router-dom';
-const companyProfile = () => {
+import React,{useContext, useState, useEffect} from 'react';
+import {Link,useParams} from 'react-router-dom';
+import {LoginContext} from '../App.js';
+import axios from 'axios'
+
+const CompanyProfile = (props) => {
+  const params = useParams();
+    console.log(params.company)
+
+  const {auth,kind,msg} = useContext(LoginContext);
+  console.log(auth,kind,msg)
+
+const [profile, getProfile] = useState([]);
+    // const url = "https://placement-tracker-swart.vercel.app/admin/";
+    const url = "http://localhost:5000/company/" + params.company;
+    console.log(url)
+    const getAllProfile = () =>{
+        axios.get(url, { headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
+          }})
+        .then((response) => {
+            const allProfile = response.data
+            console.log(allProfile)
+            getProfile(allProfile);
+        })
+        .catch(err => console.error(err));
+    }
+
+    useEffect(() => {
+        getAllProfile();
+    }, [])
+
   return (
     <>
   
@@ -27,14 +57,14 @@ const companyProfile = () => {
         <label htmlFor="name">Name</label>
         <div className="flex items-center mb-3 shadow-lg shadow-white rounded mr-2">
              
-          <p className="w-auto pl-4 pr-6 py-4  rounded  focus:outline-none " id="name">TVS Company  </p>
+          <p className="w-auto pl-4 pr-6 py-4  rounded  focus:outline-none " id="name">{profile.name} </p>
         </div>
       </div>
       <div>
           <label htmlFor="desc">Description</label>
           <div className="flex items-center mb-3 rounded mr-2 shadow-lg shadow-white">
                
-            <p className="w-full  pl-4 pr-6 py-4  rounded  focus:outline-none " id="desc">TVS and Suzuki shared a one-year-long relationship that was aimed at technology transfer for design and manufacture of two-wheelers specifically for the Indian market. Re-christened TVS-Suzuki, the company brought out several models such as the Suzuki Supra, Suzuki Samurai, Suzuki Shogun and Suzuki Shaolin. In 2001, after separating ways with Suzuki, the company was renamed TVS Motor, relinquishing its rights to use the Suzuki name. There was also a 30-month moratorium period during which Suzuki promised not to enter the Indian market with competing two-wheelers.</p>
+            <p className="w-full  pl-4 pr-6 py-4  rounded  focus:outline-none " id="desc">{profile.description}</p>
           </div>
         </div>
       
@@ -53,7 +83,7 @@ const companyProfile = () => {
         <label htmlFor="domain">Domain</label>
         <div className="flex items-center mb-3 shadow-lg shadow-white rounded mr-2">
              
-          <p className="w-full  pl-4 pr-6 py-4  rounded  focus:outline-none shadow-lg shadow-white" id="domain">IT Sector</p>
+          <p className="w-full  pl-4 pr-6 py-4  rounded  focus:outline-none shadow-lg shadow-white" id="domain">{profile.department}</p>
         </div>
       </div>
 
@@ -61,7 +91,7 @@ const companyProfile = () => {
           <label htmlFor="package">Package</label>
           <div className="flex items-center mb-3 shadow-lg shadow-white rounded mr-2">
                
-            <p className="w-full  pl-4 pr-6 py-4  rounded  focus:outline-none shadow-lg shadow-white" id="package">$450 - $500</p>
+            <p className="w-full  pl-4 pr-6 py-4  rounded  focus:outline-none shadow-lg shadow-white" id="package">{profile.package}</p>
           </div>
         </div>
       
@@ -72,14 +102,14 @@ const companyProfile = () => {
         <label htmlFor="email">Website</label>
         <div className="flex items-center mb-3 shadow-lg shadow-white rounded mr-2">
              
-          <a className="w-full  pl-4 pr-6 py-4  rounded  focus:outline-none shadow-lg shadow-white" id="web" href="www.tvs.com">www.tvs.com</a>
+          <a className="w-full  pl-4 pr-6 py-4  rounded  focus:outline-none shadow-lg shadow-white" id="web" href="www.tvs.com">{profile.website}</a>
         </div>
       </div>
       <div>
         <label htmlFor="email">Email</label>
         <div className="flex items-center mb-3 shadow-lg shadow-white rounded mr-2">
              
-          <p className="w-full  pl-4 pr-6 py-4  rounded  focus:outline-none shadow-lg shadow-white" id="email">ranjith@gmail.com</p>
+          <p className="w-full  pl-4 pr-6 py-4  rounded  focus:outline-none shadow-lg shadow-white" id="email">{profile.email}</p>
         </div>
       </div>
 
@@ -89,7 +119,7 @@ const companyProfile = () => {
       <label htmlFor="number">Phone number</label>
   <div className="flex items-center mb-3 shadow-lg shadow-white rounded mr-2">
        
-    <p className="w-full  pl-4 pr-6 py-4  rounded  focus:outline-none shadow-lg shadow-white" id="number">91235234324</p>
+    <p className="w-full  pl-4 pr-6 py-4  rounded  focus:outline-none shadow-lg shadow-white" id="number">{profile.phoneno}</p>
   </div>
   </div>
   </div>
@@ -104,4 +134,4 @@ const companyProfile = () => {
   )
 }
 
-export default companyProfile
+export default CompanyProfile

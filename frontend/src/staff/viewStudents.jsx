@@ -1,6 +1,28 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
 import { Link } from 'react-router-dom'
-const viewStudents = () => {
+const ViewStudents = () => {
+
+    const [students, getStudents] = useState([]);
+    // const url = "https://placement-tracker-swart.vercel.app/admin/";
+    const url = "http://localhost:5000/staff/student";
+    const getAllStudents = () =>{
+        axios.get(url, { headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
+          }})
+        .then((response) => {
+            const allStudents = response.data
+            console.log(allStudents)
+            getStudents(allStudents);
+        })
+        .catch(err => console.error(err));
+    }
+
+    useEffect(() => {
+        getAllStudents();
+    }, [])
+
   return (
     <div className=" p-4 pt-10 w-full h-screen  ">
         <div className="flex justify-center pb-5">
@@ -66,136 +88,72 @@ const viewStudents = () => {
     <input className=" pl-4 pr-6 py-2 font-bold rounded  focus:outline-none bg-white" id="dept" type="search" placeholder="Search department" />
     </td>
     
-</tr>               
-                            
-<tr className="bg-gray-600 text-gray-200">
-    <td className="px-5 py-5 border-b  border-gray-200 text-sm">
-        <p className="whitespace-no-wrap">1</p>
-    </td>
-    <td className="px-5 py-5 border-b border-gray-200 text-red-500 text-sm line-through">
-        <p className="whitespace-no-wrap"> task.title </p>
-    </td>
-    <td className="px-5 py-5 border-b border-gray-200  text-sm">
-        <p className="whitespace-no-wrap">
-             tadsfasdklf 
-        </p>
-    </td>
-    <td className="px-5 py-5 border-b border-gray-200 text-red-500 text-sm line-through">
-        <p className="whitespace-no-wrap"> task.title </p>
-    </td>
-    <td className="px-5 py-5 border-b border-gray-200  text-sm">
-        <p className="whitespace-no-wrap">
-             task.created_date 
-        </p>
-    </td>
-    
-    <td className="px-5 py-5 border-b border-gray-200 text-sm">
-        <a href="/delete-task/task.id">
-            <span className="relative inline-block px-3 py-1 font-semibold text-red-900 leading-tight">
-                <span aria-hidden className="absolute inset-0 bg-red-200 rounded-xl"></span>
-                <span className="relative"><i className='bx bx-trash-alt bx-xs'></i></span>
-            </span>
-        </a>
-    </td>
-    <td className="px-5 py-5 border-b border-gray-200 text-sm">
-        <Link to="/staff/student/edit">
-            <span className="relative inline-block px-3 py-1 font-semibold text-blue-900 leading-tight">
-                <span aria-hidden className="absolute inset-0 bg-blue-200 rounded-xl"></span>
-                <span className="relative"><i className='bx bx-edit-alt bx-xs'></i></span>
-            </span>
-        </Link>
-    </td>
-    <td className="px-5 py-5 border-b border-gray-200 text-sm ">
-    <Link to="/student/profile">
-            <span className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                <span aria-hidden className="absolute inset-0 bg-green-200  rounded-xl"></span>
-                <span className="relative"><i className='bx bx-award bx-xs'></i></span>
-            </span>
-        </Link>
-    </td>
-    <td className="px-5 py-5 border-b border-gray-200 text-sm">
-        <a href="/detail-task/task.id">
-            <span className="relative inline-block px-3 py-1 font-semibold text-yellow-900 leading-tight">
-                <span aria-hidden className="absolute inset-0 bg-yellow-200  rounded-xl"></span>
-                <span className="relative"><i className='bx bx-comment-detail bx-xs'></i></span>
-            </span>
-        </a>
-    </td>
-</tr>
-                             
-                            
-                            <tr className="bg-gray-600 text-gray-200">
-                                <td className="px-5 py-5 border-b border-gray-200 text-sm">
-                                    <p className="whitespace-no-wrap">2</p>
-                                </td>
-                                <td className="px-5 py-5 border-b border-gray-200  text-sm">
-                                    <p className="whitespace-no-wrap"> task.title </p>
-                                </td>
-                                <td className="px-5 py-5 border-b border-gray-200  text-sm">
-                                    <p className="whitespace-no-wrap">
-                                         task.created_date 
-                                    </p>
-                                </td>
-                                <td className="px-5 py-5 border-b border-gray-200 text-red-500 text-sm line-through">
-        <p className="whitespace-no-wrap"> task.title </p>
-    </td>
-    <td className="px-5 py-5 border-b border-gray-200  text-sm">
-        <p className="whitespace-no-wrap">
-             task.created_date 
-        </p>
-    </td>
-                                <td className="px-5 py-5 border-b border-gray-200 text-sm">
-                                    <a href="/delete-task/task.id"  >
-                                        <span
-                                            className="relative inline-block px-3 py-1 font-semibold text-red-900 leading-tight">
-                                            <span aria-hidden className="absolute inset-0 bg-red-200 rounded-xl"></span>
-                                            <span className="relative"><i className='bx bx-trash-alt bx-xs'></i></span>
-                                        </span>
-                                    </a>
-                                </td>
-                                <td className="px-5 py-5 border-b border-gray-200 text-sm">
-                                    <a href="/update-task/task.id">
-                                        <span
-                                            className="relative inline-block px-3 py-1 font-semibold text-blue-900 leading-tight">
-                                            <span aria-hidden className="absolute inset-0 bg-blue-200 rounded-xl"></span>
-                                            <span className="relative"><i className='bx bx-edit-alt bx-xs'></i></span>
-                                        </span>
-                                    </a>
-                                </td>
-                                <td className="px-5 py-5 border-b border-gray-200 text-sm">
-                                    <a href="/complete_task/task.id">
-                                        <span
-                                            className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                                            <span aria-hidden
-                                                className="absolute inset-0 bg-green-200  rounded-xl"></span>
-                                            <span className="relative"><i className='bx bx-award bx-xs'></i></span>
-                                        </span>
-                                    </a>
-                                </td>
-                                <td className="px-5 py-5 border-b border-gray-200 text-sm">
-                                    <a href="/detail-task/task.id">
-                                        <span
-                                            className="relative inline-block px-3 py-1 font-semibold text-yellow-900 leading-tight">
-                                            <span aria-hidden
-                                                className="absolute inset-0 bg-yellow-200  rounded-xl"></span>
-                                            <span className="relative"><i className='bx bx-comment-detail bx-xs'></i></span>
-                                        </span>
-                                    </a>
-                                </td>
-                            </tr>
-                            
-                            <tr className="px-5 py-5 border-b border-gray-200 bg-white text-sm ">
-                                <td colSpan="9" className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <div className="flex flex-col xs:flex-row items-center xs:justify-between          ">
-                                        <span className="text-xs xs:text-sm text-gray-900">
-                                            No students added yet
-                                        </span>
+</tr>              
 
-                                    </div>
-                                </td>
-                            </tr>
 
-                            <tr className=" border-b border-gray-200 bg-white text-sm ">
+{students.map((student,index) => {
+          const { id, name, dept,rollno,batch} =student;
+          return (
+            <tr className="bg-gray-600 text-gray-200" key={id}>
+            <td className="px-5 py-5 border-b  border-gray-200 text-sm">
+                <p className="whitespace-no-wrap">{index+1}</p>
+            </td>
+            <td className="px-5 py-5 border-b border-gray-200 text-red-500 text-sm line-through">
+                <p className="whitespace-no-wrap">{name}</p>
+            </td>
+            <td className="px-5 py-5 border-b border-gray-200  text-sm">
+                <p className="whitespace-no-wrap">
+                     {rollno}
+                </p>
+            </td>
+            <td className="px-5 py-5 border-b border-gray-200 text-red-500 text-sm line-through">
+                <p className="whitespace-no-wrap">{batch} </p>
+            </td>
+            <td className="px-5 py-5 border-b border-gray-200  text-sm">
+                <p className="whitespace-no-wrap">
+                   {dept}
+                </p>
+            </td>
+            
+            <td className="px-5 py-5 border-b border-gray-200 text-sm">
+                <a href="/delete-task/task.id">
+                    <span className="relative inline-block px-3 py-1 font-semibold text-red-900 leading-tight">
+                        <span aria-hidden className="absolute inset-0 bg-red-200 rounded-xl"></span>
+                        <span className="relative"><i className='bx bx-trash-alt bx-xs'></i></span>
+                    </span>
+                </a>
+            </td>
+            <td className="px-5 py-5 border-b border-gray-200 text-sm">
+            
+                <Link to="/staff/student/edit" state={{data:student}}>
+                    <span className="relative inline-block px-3 py-1 font-semibold text-blue-900 leading-tight">
+                        <span aria-hidden className="absolute inset-0 bg-blue-200 rounded-xl"></span>
+                        <span className="relative"><i className='bx bx-edit-alt bx-xs'></i></span>
+                    </span>
+                </Link>
+            </td>
+            <td className="px-5 py-5 border-b border-gray-200 text-sm ">
+            <Link to="/student/profile">
+                    <span className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
+                        <span aria-hidden className="absolute inset-0 bg-green-200  rounded-xl"></span>
+                        <span className="relative"><i className='bx bx-award bx-xs'></i></span>
+                    </span>
+                </Link>
+            </td>
+            <td className="px-5 py-5 border-b border-gray-200 text-sm">
+                <a href="/detail-task/task.id">
+                    <span className="relative inline-block px-3 py-1 font-semibold text-yellow-900 leading-tight">
+                        <span aria-hidden className="absolute inset-0 bg-yellow-200  rounded-xl"></span>
+                        <span className="relative"><i className='bx bx-comment-detail bx-xs'></i></span>
+                    </span>
+                </a>
+            </td>
+        </tr>
+       
+            
+          );
+        })}    
+         <tr className=" border-b border-gray-200 bg-white text-sm ">
                                 <td colSpan="9" >
                                    
                                 <div
@@ -237,4 +195,4 @@ const viewStudents = () => {
   )
 }
 
-export default viewStudents
+export default ViewStudents

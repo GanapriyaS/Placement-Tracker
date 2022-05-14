@@ -1,6 +1,12 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import {Link} from 'react-router-dom';
-const navbar_lg = () => {
+import {LoginContext} from '../../App.js';
+const Navbar_lg = () => {
+  const {auth,kind,msg} = useContext(LoginContext);
+  console.log(auth,kind,msg)
+  const url_company="/companies/profile/"+msg;
+  const url_student="/student/profile/"+msg;
+  const url_staff="/staff/profile/"+msg;
   return (
     <div className="flex flex-col w-full px-2 py-8 overflow-auto border-b lg:border-r bg-white lg:h-screen lg:w-64 lg:block hidden fixed" id="menu">
   
@@ -54,14 +60,14 @@ const navbar_lg = () => {
                   </li>
                   
                   <li>
-                    <Link className="flex items-center px-4 py-2 mt-5 text-black rounded-md hover:bg-gray-200 " to="/staff/profile">
+                    <Link className="flex items-center px-4 py-2 mt-5 text-black rounded-md hover:bg-gray-200 " to={url_staff}>
                     <i className='bx bx-user bx-sm bx-fade-right-hover'></i>
     
                       <span className="mx-4 font-medium">Staff Profile</span>
                     </Link>
                   </li>
                   <li>
-                    <Link className="flex items-center px-4 py-2 mt-5 text-black rounded-md hover:bg-gray-200 " to="/student/profile">
+                    <Link className="flex items-center px-4 py-2 mt-5 text-black rounded-md hover:bg-gray-200 " to={url_student}>
                     <i className='bx bx-user bx-sm bx-fade-right-hover'></i>
     
                       <span className="mx-4 font-medium">Student Profile</span>
@@ -69,7 +75,7 @@ const navbar_lg = () => {
                   </li>
                   
                   <li>
-                    <Link className="flex items-center px-4 py-2 mt-5 text-black rounded-md hover:bg-gray-200 " to="/companies/profile">
+                    <Link className="flex items-center px-4 py-2 mt-5 text-black rounded-md hover:bg-gray-200 " to={url_company}>
                     <i className='bx bx-user bx-sm bx-fade-right-hover'></i>
     
                       <span className="mx-4 font-medium">Companies Profile</span>
@@ -103,4 +109,4 @@ const navbar_lg = () => {
   )
 }
 
-export default navbar_lg
+export default Navbar_lg

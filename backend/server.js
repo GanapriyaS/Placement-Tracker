@@ -1,5 +1,21 @@
 const express = require("express");
 
+const app = express();
+
+const cors = require("cors");
+var bodyParser = require('body-parser')
+app.use(bodyParser.urlencoded({ extended: false }))
+
+// parse application/json
+app.use(bodyParser.json())
+
+
+app.use(cors());
+app.use(function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods: PUT, GET, POST, DELETE, OPTIONS');
+    next();
+  });
 
 const { notFound, errorHandler }= require('./middleware/errorMiddlware.js')
 const staffRoutes= require('./routes/staffRoutes.js')
@@ -8,22 +24,6 @@ const studentRoutes= require('./routes/studentRoutes.js')
 const adminRoutes= require('./routes/adminRoutes.js')
 const userRoutes= require('./routes/userRoutes.js')
 
-
-
-
-const app = express();
-
-const cors = require("cors");
-
-app.use(express.urlencoded({ extended: false }))
-app.use(express.json())
-
-app.use(cors());
-app.use(function(req, res, next) {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-    next();
-  });
 
 
 

@@ -3,7 +3,9 @@ const client= require('../config/db.js');
 const viewstaffprofile = async (req,res) => {
     try {
         const results = await client.query("SELECT * FROM staff where id=$1", [req.params.id]);
-        res.status(200).json(results.rows);
+        console.log(req.params.id, results.rows[0])
+        res.status(200).json(results.rows[0]);
+        
       } catch (err) {
         console.log(err)
         res.status(500).json({"msg":"Server Error"})
@@ -49,15 +51,21 @@ const deletestudent = async (req,res) => {
 
 const addstudent =async (req,res) => {
     const { name, dept, role, batch } = req.body
-       console.log(req.body)
+      
        try {
+        const results = await client.query("SELECT * FROM student where rollno=$1", [role]);
+        console.log(results.rowCount)
+        if(results.rowCount <= 0){
         const uid = uuid.v1()
-                const results = await client.query("INSERT INTO student( id, name, dept, batch, cgpa, rollno, skill, email, portfolio, github, linkedin, phoneno)VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12)", [uid,name,dept,batch,"nil",role,"nil",uid,uid,uid,uid,uid]);
+                const results = await client.query("INSERT INTO student( id, name, dept, batch, cgpa, rollno, skill, email, portfolio, github, linkedin, phoneno)VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12)", [uid,name,dept,batch,"nil",role,"nil","nil","nil","nil","nil","nil"]);
                 if(results.rowCount===1){
                     await client.query("INSERT INTO login( username,pass, key, type)VALUES($1,$2,$3,$4)", [uid,"gct",uid,"student"]);
                 }
                 res.status(201).json(results.rowCount)
-    
+              }
+              else{
+                res.status(400).json({"msg":"Already existing rollno "})
+              }
       } catch (err) {
         console.log(err)
         res.status(500).json({"msg":"Server Error"})

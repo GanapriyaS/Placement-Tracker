@@ -1,11 +1,12 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import {Outlet } from "react-router-dom";
 
 import Home from './Home';
 import Header from './navbar/header';
 import NavBarLg from './navbar/navbar_lg';
 
-const navbar = ({type}) => {
+const Navbar = ({type}) => {
+  
     var check= type==="home";
   return (
     <>
@@ -28,4 +29,4 @@ const navbar = ({type}) => {
   )
 }
 
-export default navbar
+export default Navbar

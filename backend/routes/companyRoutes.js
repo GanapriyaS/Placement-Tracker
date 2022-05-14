@@ -28,7 +28,7 @@ router
 
 
 router
-    .route('/job/:jobid')
+    .route('/:id/job/:jobid')
     .delete( deletejob)
     .put(editjob)
     .get( viewjobdetails)
