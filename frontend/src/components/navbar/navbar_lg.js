@@ -1,12 +1,23 @@
 import React,{useContext} from 'react'
 import {Link} from 'react-router-dom';
 import {LoginContext} from '../../App.js';
+import {useNavigate} from 'react-router-dom'
+
 const Navbar_lg = () => {
+
+  let navigate = useNavigate();
+
   const {auth,kind,msg} = useContext(LoginContext);
   console.log(auth,kind,msg)
   const url_company="/companies/profile/"+msg;
   const url_student="/student/profile/"+msg;
   const url_staff="/staff/profile/"+msg;
+
+  function onLogOut(){
+    localStorage.removeItem("token")
+    navigate("/login")
+  }
+
   return (
     <div className="flex flex-col w-full px-2 py-8 overflow-auto border-b lg:border-r bg-white lg:h-screen lg:w-64 lg:block hidden fixed" id="menu">
   
@@ -97,7 +108,7 @@ const Navbar_lg = () => {
                       
     
                       <span className="text-center font-medium ">Pentagon</span><br></br>
-                      <span className="text-center text-blue-500">Log out</span>
+                      <span className="text-center text-blue-500 cursor-pointer " onClick={onLogOut}>Log out</span>
                     </div>
                   </li>
               </ul>
