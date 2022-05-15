@@ -9,6 +9,7 @@ const Navbar_lg = () => {
 
   const {auth,kind,msg} = useContext(LoginContext);
   console.log(auth,kind,msg)
+
   const url_company="/companies/profile/"+msg;
   const url_student="/student/profile/"+msg;
   const url_staff="/staff/profile/"+msg;
@@ -25,7 +26,7 @@ const Navbar_lg = () => {
           <div className="flex flex-col justify-between mt-4">
             <aside>
               <ul>
-                
+                {!auth && 
                 <li>
                   <Link className="flex items-center px-4 py-2 text-black rounded-md hover:bg-gray-200 " to="/login">
                   <i className='bx bxs-user-x bx-sm bx-fade-right-hover' ></i>
@@ -33,6 +34,7 @@ const Navbar_lg = () => {
                     <span className="mx-4 font-medium">Login</span>
                   </Link>
                 </li>
+                }
 
                 <li>
                   <Link className="flex items-center px-4 py-2 mt-5 text-black rounded-md hover:bg-gray-200 " to="/">
@@ -41,7 +43,7 @@ const Navbar_lg = () => {
                     <span className="mx-4 font-medium">Home</span>
                   </Link>
                 </li>
-                
+                {auth && msg && kind &&
                 <li>
                   <Link className="flex items-center px-4 py-2 mt-5 text-black rounded-md hover:bg-gray-200 " to="/companies/view">
                   <i className='bx bx-award bx-sm bx-fade-right-hover' ></i>
@@ -49,6 +51,7 @@ const Navbar_lg = () => {
                     <span className="mx-4 font-medium">View Jobs</span>
                   </Link>
                 </li>
+                }
                 <li>
                     <Link className="flex items-center px-4 py-2 mt-5 text-black rounded-md hover:bg-gray-200 " to="/companies/register">
                     <i className='bx bx-user-plus bx-sm bx-fade-right-hover' ></i>
@@ -70,6 +73,7 @@ const Navbar_lg = () => {
                     </Link>
                   </li>
                   
+                  {auth && kind==="staff" && 
                   <li>
                     <Link className="flex items-center px-4 py-2 mt-5 text-black rounded-md hover:bg-gray-200 " to={url_staff}>
                     <i className='bx bx-user bx-sm bx-fade-right-hover'></i>
@@ -77,6 +81,9 @@ const Navbar_lg = () => {
                       <span className="mx-4 font-medium">Staff Profile</span>
                     </Link>
                   </li>
+                  }
+
+                  {auth && kind==="student" && 
                   <li>
                     <Link className="flex items-center px-4 py-2 mt-5 text-black rounded-md hover:bg-gray-200 " to={url_student}>
                     <i className='bx bx-user bx-sm bx-fade-right-hover'></i>
@@ -84,7 +91,9 @@ const Navbar_lg = () => {
                       <span className="mx-4 font-medium">Student Profile</span>
                     </Link>
                   </li>
+                  }
                   
+                  {auth && kind==="company" &&
                   <li>
                     <Link className="flex items-center px-4 py-2 mt-5 text-black rounded-md hover:bg-gray-200 " to={url_company}>
                     <i className='bx bx-user bx-sm bx-fade-right-hover'></i>
@@ -92,7 +101,9 @@ const Navbar_lg = () => {
                       <span className="mx-4 font-medium">Companies Profile</span>
                     </Link>
                   </li>
+                  }
 
+                {auth && kind==="admin" &&
                   <li>
                     <Link className="flex items-center px-4 py-2 mt-5 text-black rounded-md hover:bg-gray-200 " to="/admin/companies/approve">
                     <i className='bx bx-user bx-sm bx-fade-right-hover'></i>
@@ -101,16 +112,18 @@ const Navbar_lg = () => {
                     </Link>
                   </li>
                   
-                 
+                }
+                 { auth &&
                   <li className="mt-4">
                     <hr></hr>
                     <div className="items-center text-center px-4 py-2 mt-5 text-black rounded-md hover:bg-gray-200" >
                       
     
-                      <span className="text-center font-medium ">Pentagon</span><br></br>
+                      <span className="text-center font-medium ">{kind[0].toUpperCase() + kind.slice(1)}</span><br></br>
                       <span className="text-center text-blue-500 cursor-pointer " onClick={onLogOut}>Log out</span>
                     </div>
                   </li>
+                  }
               </ul>
   
             </aside>

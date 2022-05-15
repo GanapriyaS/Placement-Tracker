@@ -39,8 +39,28 @@ const approvecompany = async (req,res) => {
             if(results.rowCount <=0){
                 console.log("dfasd")
             await client.query("INSERT INTO login( username,pass, key, type)VALUES($1,$2,$3,$4)", [req.params.id,"gct",req.params.id,"company"]);
-            }
+            const transporter = nodemailer.createTransport({
+              service: 'gmail',
+              auth: {
+                user: 'ganapriyakheersagar@gmail.com',
+                pass: 'yulricdeuptjhypg',
+              },
+            });
+            
+            
+            transporter.sendMail({
+              from: '"Ganapriya S" <ganapriyakheersagar@gmail.com>', // sender address
+              to: email, // list of receivers
+              subject: "Regarding Authentication of Placement Tracker ✔", // Subject line
+              text: "Username : "+req.params.id +"\nPassword : gct", // plain text body
+            
+            }).then(info => {
+              console.log({info});
+            }).catch(console.error);
+          }
         }
+
+
                 res.status(200).json(result.rowCount)
 
       } catch (err) {
@@ -54,6 +74,7 @@ const deletestaff = async (req,res) => {
         const result = await client.query("DELETE FROM staff WHERE id=$1", [
           req.params.id
         ]);
+        await client.query("DELETE FROM login  where key=$1 and type=$2", [req.params.id,"staff"]);
         console.log(result)
         res.status(200).json(result.rowCount);
       } catch (err) {

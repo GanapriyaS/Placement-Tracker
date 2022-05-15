@@ -38,9 +38,9 @@ export const LoginContext = React.createContext();
 
 function App() {
 
-  const [auth, getAuth] = useState();
-  const [kind, getKind] = useState();
-  const [msg, getMsg] = useState();
+  const [auth, getAuth] = useState(false);
+  const [kind, getKind] = useState("None");
+  const [msg, getMsg] = useState("None");
   
 function setToken(userToken) {
   

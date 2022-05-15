@@ -46,6 +46,7 @@ const editstaffprofile =  async (req,res) => {
 const deletestudent = async (req,res) => {
     try {
         const result = await client.query("DELETE FROM student WHERE id=$1", [req.params.id]);
+        await client.query("DELETE FROM login  where key=$1 and type=$2", [req.params.id,"student"]);
         console.log(result)
         res.status(200).json(result.rowCount);
       } catch (err) {
