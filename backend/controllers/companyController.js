@@ -37,6 +37,7 @@ const addapplicant = async (req,res) => {
 const viewapplicants = async (req,res) => {
     try {
         const results = await client.query("SELECT * FROM student where id in (select student_id from application where job_id=$1 and hire=$2)", [req.params.jobid,"pending"]);
+        console.log(results.rows)
         res.status(200).json(results.rows);
       } catch (err) {
         console.log(err)
@@ -58,6 +59,7 @@ const viewcompanyprofile = async (req,res) => {
 
 const editcompanyprofile = async (req,res) => {
     const { name, description, department, package, website, email, phoneno } = req.body
+   
     try {
         const result = await client.query("update company set name=$1, description=$2, department=$3, package=$4,website=$5, email=$6, phoneno=$7 where id=$8", [name, description, department, package, website, email, phoneno,req.params.id]);
         res.status(200).json(result.rowCount)

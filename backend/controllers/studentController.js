@@ -43,7 +43,15 @@ const editstudentprofile = async (req,res) => {
 }
 
 const viewappliedjobs = async (req,res) => {
-    res.json("viewappliedjobs")
+    try {
+        
+        const results = await client.query("SELECT  jobs.*, application.hire ,company.name as compname  FROM ((jobs INNER JOIN application ON jobs.id=application.job_id ) inner join company on company.id=jobs.companyname) WHERE application.student_id=$1", [req.params.id]);
+        console.log(results.rows)
+        res.status(200).json(results.rows);
+      } catch (err) {
+        console.log(err)
+        res.status(500).json({"msg":"Server Error"})
+      }
 }
 
 

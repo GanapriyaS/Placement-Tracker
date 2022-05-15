@@ -1,6 +1,37 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
-const appliedJobs = () => {
+import React,{useState, useEffect,useContext} from 'react'
+import {Link} from 'react-router-dom'
+import {LoginContext} from '../App.js';
+import axios from 'axios'
+
+const AppliedJobs = () => {
+    const {auth,kind,msg} = useContext(LoginContext);
+    console.log(auth,kind,msg)
+
+  
+  const [applicants, getApplicants] = useState([]);  
+    const getAllApplicants = (id) =>{
+        const env=process.env.NODE_ENV;
+const url = env === 'production'?  "https://placement-tracker-swart.vercel.app/student/"+id+"/jobs": "http://localhost:5000/student/"+id+"/jobs"
+
+console.log("app",url)
+axios.get(url, { headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
+          }})
+        .then((response) => {
+            const allApplicants = response.data
+            console.log("app",allApplicants)
+            getApplicants(allApplicants);
+        })
+        .catch(err => console.error(err));
+    }
+
+    useEffect(() => {
+          
+        getAllApplicants(msg);
+       
+      }, [])
+
   return (
     <div className=" p-4 pt-10 w-full h-screen  ">
         <div className="flex justify-center pb-5">
@@ -41,6 +72,8 @@ const appliedJobs = () => {
 
                         </thead>
                         <tbody >
+
+
                         <tr className="text-black">
     <td className="px-5 py-3 border-b  border-gray-200 text-sm">
         <p className="whitespace-no-wrap"></p>
@@ -58,20 +91,24 @@ const appliedJobs = () => {
     
 </tr>             
                             
-<tr className="bg-gray-600 text-gray-200">
+{applicants.map((applicant,index) => {
+          const {id,name,intern,hire,compname} = applicant
+          
+          return (   
+<tr className="bg-gray-600 text-gray-200" key={id}>
     <td className="px-5 py-5 border-b  border-gray-200 text-sm">
-        <p className="whitespace-no-wrap">1</p>
+        <p className="whitespace-no-wrap">{index+1}</p>
     </td>
     <td className="px-5 py-5 border-b border-gray-200 text-red-500 text-sm line-through">
-        <p className="whitespace-no-wrap"> task.title </p>
+        <p className="whitespace-no-wrap"> {name}</p>
     </td>
     <td className="px-5 py-5 border-b border-gray-200  text-sm">
         <p className="whitespace-no-wrap">
-             tadsfasdklf 
+{intern}
         </p>
     </td>
     <td className="px-5 py-5 border-b border-gray-200 text-red-500 text-sm line-through">
-        <p className="whitespace-no-wrap"> task.title </p>
+        <p className="whitespace-no-wrap"> {compname} </p>
     </td>
     
     
@@ -86,45 +123,15 @@ const appliedJobs = () => {
                                     </Link>
                                 </td>
                                 <td className="px-5 py-5 border-b border-gray-200 text-red-500 text-sm line-through">
-        <p className="whitespace-no-wrap"> task.title </p>
+        <p className="whitespace-no-wrap"> {hire} </p>
     </td>
     
     
 </tr>
-                             
+                          );
+                        })}        
                             
-                            <tr className="bg-gray-600 text-gray-200">
-                                <td className="px-5 py-5 border-b border-gray-200 text-sm">
-                                    <p className="whitespace-no-wrap">2</p>
-                                </td>
-                                <td className="px-5 py-5 border-b border-gray-200  text-sm">
-                                    <p className="whitespace-no-wrap"> task.title </p>
-                                </td>
-                                <td className="px-5 py-5 border-b border-gray-200  text-sm">
-                                    <p className="whitespace-no-wrap">
-                                         task.created_date 
-                                    </p>
-                                </td>
-                                <td className="px-5 py-5 border-b border-gray-200 text-red-500 text-sm line-through">
-        <p className="whitespace-no-wrap"> task.title </p>
-    </td>
-   
-    <td className="px-5 py-5 border-b border-gray-200 text-sm">
-                                   <Link to="/companies/jobs/details">
-                                        <span
-                                            className="relative inline-block px-3 py-1 font-semibold text-yellow-900 leading-tight">
-                                            <span aria-hidden
-                                                className="absolute inset-0 bg-yellow-200  rounded-xl"></span>
-                                            <span className="relative"><i className='bx bx-comment-detail bx-xs'></i></span>
-                                        </span>
-                                    </Link>
-                                </td>
-                                <td className="px-5 py-5 border-b border-gray-200 text-red-500 text-sm line-through">
-        <p className="whitespace-no-wrap"> task.title </p>
-    </td>
-                              
-                                
-                            </tr>
+                     
                             
                             <tr className="px-5 py-5 border-b border-gray-200 bg-white text-sm ">
                                 <td colSpan="9" className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
@@ -178,4 +185,4 @@ const appliedJobs = () => {
   )
 }
 
-export default appliedJobs
+export default AppliedJobs

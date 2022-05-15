@@ -105,7 +105,7 @@ const url = env === 'production'?  "https://placement-tracker-swart.vercel.app/c
     <p className="whitespace-no-wrap"> {dept} </p>
 </td>
 <td className="px-5 py-5 border-b border-gray-200 text-sm">
-                                    <Link to="/companies/applicants">
+                                    <Link to="/companies/applicants" state={{data:job}}>
                                         <span
                                             className="relative inline-block px-3 py-1 font-semibold text-yellow-900 leading-tight">
                                             <span aria-hidden
@@ -146,7 +146,7 @@ const url = env === 'production'?  "https://placement-tracker-swart.vercel.app/c
           );
         })}    
                         
-                        <tr className="px-5 py-5 border-b border-gray-200 bg-white text-sm ">
+                        {/* <tr className="px-5 py-5 border-b border-gray-200 bg-white text-sm ">
                             <td colSpan="9" className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                 <div className="flex flex-col xs:flex-row items-center xs:justify-between          ">
                                     <span className="text-xs xs:text-sm text-gray-900">
@@ -155,12 +155,12 @@ const url = env === 'production'?  "https://placement-tracker-swart.vercel.app/c
 
                                 </div>
                             </td>
-                        </tr>
+                        </tr> */}
 
                         <tr className=" border-b border-gray-200 bg-white text-sm ">
                             <td colSpan="9" >
                                
-                            <div
+                            {/* <div
                     className="px-5 py-5 bg-gray-100 flex flex-col xs:flex-row items-center xs:justify-between          ">
                     <div className="inline-flex xs:mt-0">
 
@@ -182,7 +182,7 @@ const url = env === 'production'?  "https://placement-tracker-swart.vercel.app/c
                         
                     </div>
 
-                </div>
+                </div> */}
 
                                 
                             </td>

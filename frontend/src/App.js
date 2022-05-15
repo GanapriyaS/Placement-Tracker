@@ -33,16 +33,20 @@ import StudentDetails from "./student/studentDetails";
 import EditStudentProfile from "./student/editStudentProfile";
 
 import './App.css';
-function setToken(userToken) {
-  localStorage.setItem('token', JSON.stringify(userToken));
-}
+
 export const LoginContext = React.createContext();
 
 function App() {
+
   const [auth, getAuth] = useState();
   const [kind, getKind] = useState();
   const [msg, getMsg] = useState();
   
+function setToken(userToken) {
+  
+  localStorage.setItem('token', JSON.stringify(userToken));
+  getToken()
+}
 
 const getToken = () =>{
   const tokenString = localStorage.getItem('token');

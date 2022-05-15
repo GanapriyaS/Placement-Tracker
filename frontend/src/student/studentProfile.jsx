@@ -11,7 +11,7 @@ const StudentProfile = (props) => {
   console.log(auth,kind,msg)
   
 const [profile, getProfile] = useState([]);const env=process.env.NODE_ENV;
-const url = env === 'production'?  "https://placement-tracker-swart.vercel.app/student"+ params.student: "http://localhost:5000/student"+ params.student
+const url = env === 'production'?  "https://placement-tracker-swart.vercel.app/student/"+ params.student: "http://localhost:5000/student/"+ params.student
 
     console.log(url)
     const getAllProfile = () =>{

@@ -44,7 +44,7 @@ const url = env === 'production'?  "https://placement-tracker-swart.vercel.app/c
   <div className="mt-4 md:mt-0 flex">
     <Link className="py-2 px-3 mr-1 text-sm mb-1 bg-black hover:bg-gray-400 text-white font-bold rounded transition duration-200" to="/companies/jobs/view">View Jobs</Link>
     <Link className="py-2 px-3 mr-1 text-sm mb-1 bg-black hover:bg-gray-400 text-white font-bold rounded transition duration-200" to="/companies/jobs/add">Add Jobs</Link>
-    <Link className="py-2 px-3 text-sm bg-black mb-1 hover:bg-gray-400 text-white font-bold rounded transition duration-200" to="/companies/editprofile">Edit Profile</Link>
+    <Link className="py-2 px-3 text-sm bg-black mb-1 hover:bg-gray-400 text-white font-bold rounded transition duration-200" to="/companies/editprofile" state={{data:profile}}>Edit Profile</Link>
   </div>
   
 </div>

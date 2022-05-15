@@ -6,6 +6,7 @@ const AddStudent = () => {
     dept: '',
     roll: '',
     batch: '',
+    email:""
 });
 const [loading, setLoading] = useState(false);
 const [isError, setIsError] = useState(false);
@@ -17,20 +18,21 @@ const handleSubmit = (e) => {
   e.preventDefault(); 
   setLoading(true);
   setIsError(false);
-  const { name, dept, roll, batch } = students;
+  const { name, dept, roll, batch,email } = students;
  
-  if (name && dept && roll && batch) {
+  if (name && dept && roll && batch && email) {
     const data = {
       name: name,
       dept: dept,
       role:roll,
-      batch:batch
+      batch:batch,
+      email:email
     }
     const env=process.env.NODE_ENV;
     const url = env === 'production'?  "https://placement-tracker-swart.vercel.app/staff/student": "http://localhost:5000/staff/student"
         
     axios.post(url, data).then(res => {
-      setStudents({ name: '', dept: '',roll:'',batch:'' });
+      setStudents({ name: '', dept: '',roll:'',batch:'',email:'' });
       setLoading(false);
       console.log(res.status)
 
@@ -111,6 +113,17 @@ const handleChange = (e) => {
             <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="batch" name="batch" onChange={handleChange} type="text" placeholder="batch" />
           </div>
         </div>
+      
+  </div>
+  <div className="flex items-center mb-3 ">
+      <div>
+        <label htmlFor="roll">Email</label>
+        <div className="flex items-center mb-3 bg-white rounded mr-2">
+             
+          <input className="w-full  pl-4 pr-6 py-4 font-bold rounded  focus:outline-none bg-white" id="email" name="email" onChange={handleChange} type="text" placeholder="Email" />
+        </div>
+      </div>
+     
       
   </div>
  <br></br>

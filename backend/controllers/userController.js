@@ -76,7 +76,7 @@ const companyregister = async (req,res) => {
 
 const getalljobs = async (req,res) => {
     try {
-        const results = await client.query("SELECT  jobs.*, company.name as companyname FROM jobs INNER JOIN company ON jobs.companyname=company.id");
+        const results = await client.query("SELECT  jobs.*, company.name as compname FROM jobs INNER JOIN company ON jobs.companyname=company.id");
  
         res.status(200).json(results.rows);
       } catch (err) {

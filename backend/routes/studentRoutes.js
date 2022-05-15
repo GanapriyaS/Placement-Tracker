@@ -11,6 +11,6 @@ const { student,admin } =  require('../middleware/authMiddleware.js')
 
 router.route('/:id').get(viewstudentprofile).put(editstudentprofile)
 router.route('/').get(viewallstudents)
-router.route('/job/:id').get(viewappliedjobs)
+router.route('/:id/jobs').get(viewappliedjobs)
 
 module.exports = router

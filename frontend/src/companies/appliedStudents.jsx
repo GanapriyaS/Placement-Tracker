@@ -1,6 +1,40 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
-const appliedStudents = () => {
+import React,{useState, useEffect,useContext} from 'react'
+import { useLocation,Link } from "react-router-dom";
+import {LoginContext} from '../App.js';
+import axios from 'axios'
+
+const AppliedStudents = () => {
+    const {auth,kind,msg} = useContext(LoginContext);
+    console.log(auth,kind,msg)
+    const location = useLocation();
+  const [applicants, getApplicants] = useState([]);
+
+  
+    const getAllApplicants = (jobid,companyid) =>{
+        const env=process.env.NODE_ENV;
+const url = env === 'production'?  "https://placement-tracker-swart.vercel.app/company/"+companyid+"/job/"+jobid+"/applicants": "http://localhost:5000/company/"+companyid+"/job/"+jobid+"/applicants"
+
+console.log("app",url)
+axios.get(url, { headers: {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
+          }})
+        .then((response) => {
+            const allApplicants = response.data
+            console.log("app",allApplicants)
+            getApplicants(allApplicants);
+        })
+        .catch(err => console.error(err));
+    }
+
+    useEffect(() => {
+        const {data } = location.state;        
+        getAllApplicants(data.id, msg);
+        console.log(data)
+      }, [])
+
+
+
   return (
     <div className=" p-4 pt-10 w-full h-screen  ">
         <div className="flex justify-center pb-5">
@@ -46,22 +80,25 @@ const appliedStudents = () => {
 
                         </thead>
                         <tbody >
-                           
-                            
-<tr className="bg-gray-600 text-gray-200">
+           
+{applicants.map((applicant,index) => {
+          const {id,name,email,phoneno} = applicant
+          
+          return (      
+<tr className="bg-gray-600 text-gray-200" key={id}>
     <td className="px-5 py-5 border-b  border-gray-200 text-sm">
-        <p className="whitespace-no-wrap">1</p>
+        <p className="whitespace-no-wrap">{index+1}</p>
     </td>
     <td className="px-5 py-5 border-b border-gray-200 text-red-500 text-sm line-through">
-        <p className="whitespace-no-wrap"> task.title </p>
+        <p className="whitespace-no-wrap"> {name}</p>
     </td>
     <td className="px-5 py-5 border-b border-gray-200  text-sm">
         <p className="whitespace-no-wrap">
-             tadsfasdklf 
+            {email}
         </p>
     </td>
     <td className="px-5 py-5 border-b border-gray-200 text-red-500 text-sm line-through">
-        <p className="whitespace-no-wrap"> task.title </p>
+        <p className="whitespace-no-wrap">{phoneno}</p>
     </td>
     
     
@@ -94,56 +131,11 @@ const appliedStudents = () => {
     </td>
     
 </tr>
-                             
-                            
-                            <tr className="bg-gray-600 text-gray-200">
-                                <td className="px-5 py-5 border-b border-gray-200 text-sm">
-                                    <p className="whitespace-no-wrap">2</p>
-                                </td>
-                                <td className="px-5 py-5 border-b border-gray-200  text-sm">
-                                    <p className="whitespace-no-wrap"> task.title </p>
-                                </td>
-                                <td className="px-5 py-5 border-b border-gray-200  text-sm">
-                                    <p className="whitespace-no-wrap">
-                                         task.created_date 
-                                    </p>
-                                </td>
-                                <td className="px-5 py-5 border-b border-gray-200 text-red-500 text-sm line-through">
-        <p className="whitespace-no-wrap"> task.title </p>
-    </td>
-   
-    <td className="px-5 py-5 border-b border-gray-200 text-sm">
-                                    <a href="/detail-task/task.id">
-                                        <span
-                                            className="relative inline-block px-3 py-1 font-semibold text-yellow-900 leading-tight">
-                                            <span aria-hidden
-                                                className="absolute inset-0 bg-yellow-200  rounded-xl"></span>
-                                            <span className="relative"><i className='bx bx-comment-detail bx-xs'></i></span>
-                                        </span>
-                                    </a>
-                                </td>
-                                <td className="px-5 py-5 border-b border-gray-200 text-sm">
-                                    <a href="/delete-task/task.id"  >
-                                        <span
-                                            className="relative inline-block px-3 py-1 font-semibold text-red-900 leading-tight">
-                                            <span aria-hidden className="absolute inset-0 bg-red-200 rounded-xl"></span>
-                                            <span className="relative"><i className='bx bx-trash-alt bx-xs'></i></span>
-                                        </span>
-                                    </a>
-                                </td>
-                                <td className="px-5 py-5 border-b border-gray-200 text-sm">
-                                    <a href="/complete_task/task.id">
-                                        <span
-                                            className="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
-                                            <span aria-hidden
-                                                className="absolute inset-0 bg-green-200  rounded-xl"></span>
-                                            <span className="relative"><i className='bx bx-award bx-xs'></i></span>
-                                        </span>
-                                    </a>
-                                </td>
-                                
-                            </tr>
-                            
+
+            
+          );
+        })}                    
+ 
                             <tr className="px-5 py-5 border-b border-gray-200 bg-white text-sm ">
                                 <td colSpan="9" className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                     <div className="flex flex-col xs:flex-row items-center xs:justify-between          ">
@@ -196,4 +188,4 @@ const appliedStudents = () => {
   )
 }
 
-export default appliedStudents
+export default AppliedStudents

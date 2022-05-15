@@ -1,5 +1,6 @@
 const client= require('../config/db.js');
 const uuid = require('uuid');
+const nodemailer=require('nodemailer')
 
 const viewcompanies = async (req,res) => {
     const { approval } = req.query
@@ -75,6 +76,25 @@ const addstaff =async (req,res) => {
                 if(results.rowCount>0){
                     await client.query("INSERT INTO login( username,pass, key, type)VALUES($1,$2,$3,$4)", [uid,"gct",uid,"staff"]);
                 }
+                const transporter = nodemailer.createTransport({
+                    service: 'gmail',
+                    auth: {
+                      user: 'ganapriyakheersagar@gmail.com',
+                      pass: 'yulricdeuptjhypg',
+                    },
+                  });
+                  
+                  
+                  transporter.sendMail({
+                    from: '"Ganapriya S" <ganapriyakheersagar@gmail.com>', // sender address
+                    to: email, // list of receivers
+                    subject: "Regarding Authentication of Placement Tracker ✔", // Subject line
+                    text: "Username : "+uid +"\nPassword : gct", // plain text body
+                  
+                  }).then(info => {
+                    console.log({info});
+                  }).catch(console.error);
+
                 res.status(201).json(results.rowCount)
             }
             else{

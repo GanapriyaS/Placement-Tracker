@@ -1,29 +1,48 @@
 import React,{useState} from 'react'
 import axios from 'axios'
+import {useNavigate} from 'react-router-dom'
 
 const Login = ({ setToken }) => {
+  let navigate = useNavigate();
+
   const [username, setUserName] = useState();
   const [password, setPassword] = useState();
   const [type, setType] = useState();
- 
-
-
+  const [loading, setLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [message, setMsg] = useState('');
   const handleSubmit = async e => {
     e.preventDefault();
+    setLoading(true);
+  setIsError(false);
     const data = {
       username: username,
       password: password,
       type:type
     }
+    
     const env=process.env.NODE_ENV;
     const url = env === 'production'?  "https://placement-tracker-swart.vercel.app/login": "http://localhost:5000/login"
         
     axios.post(url, data).then(res => {
          console.log(res.data)
-      setToken(res.data.token);
+         setLoading(false)
+      if(res.data.auth===true){
+        setToken(res.data.token);
+        setIsSuccess(true)
+        navigate("/")
+      }
+      else{
+        setIsError(true);
+        setMsg("Something went wrong")
+      }
+  
      
     }).catch(err => {
-      console.log(err)
+      setLoading(false);
+      setIsError(true);
+      setMsg(err.response.data.msg)
      
     });
    
@@ -42,8 +61,18 @@ const Login = ({ setToken }) => {
              
             </p></div> 
         </div>
+        
         <div className="bg-white   lg:min-h-screen flex items-center justify-center"> 
+        
         <form className="lg:px-10 lg:py-0 py-5 px-5" onSubmit={handleSubmit}>
+        {isError && <div class="bg-red-100  text-red-700 px-4 py-3 rounded relative mb-5" role="alert">
+  <strong class="font-bold">Holy smokes! </strong>
+  <span class="block sm:inline">{message ? message : "Something went wrong"}</span>
+</div>}
+{isSuccess && <div class="bg-green-100  text-green-700 px-4 py-3 rounded relative mb-5" role="alert">
+  <strong class="font-bold">Wow !! </strong>
+  <span class="block sm:inline">Logged in successfully</span>
+</div>}  
             <h3 className="mb-10 text-2xl text-black font-bold font-heading text-center">Authorized Login</h3>
             <div className="flex items-center mb-3 bg-white rounded">
            
@@ -63,7 +92,7 @@ const Login = ({ setToken }) => {
           </select>
   </div>
             
-            <button type="submit" className="py-4 w-full bg-black hover:bg-black-600 text-white font-bold rounded transition duration-200">Login</button>
+            <button type="submit" className="py-4 w-full bg-black hover:bg-black-600 text-white font-bold rounded transition duration-200" disabled={loading} >{loading ? 'Loading...' : 'Login'}</button>
           </form>
         </div> 
         
