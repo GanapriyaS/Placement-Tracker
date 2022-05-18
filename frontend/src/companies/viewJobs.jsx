@@ -72,12 +72,9 @@ const ViewJobs = () => {
     <div className=" p-4 pt-10 w-full h-screen  ">
       <div className="flex justify-center pb-5">
         <div className="">
-          <a
-            href="/#"
-            className="flex items-center text-3xl lg:text-4xl font-bold"
-          >
+          <p className="flex items-center text-3xl lg:text-4xl font-bold">
             <span className="text-black ">Existing jobs</span>
-          </a>
+          </p>
         </div>
       </div>
       {isError && (
@@ -159,11 +156,11 @@ const ViewJobs = () => {
                   <td className="px-5 py-5 border-b  border-gray-200 text-sm">
                     <p className="whitespace-no-wrap">{index + 1}</p>
                   </td>
-                  <td className="px-5 py-5 border-b border-gray-200 text-red-500 text-sm line-through">
+                  <td className="px-5 py-5 border-b border-gray-200 text-sm">
                     <p className="whitespace-no-wrap"> {name} </p>
                   </td>
 
-                  <td className="px-5 py-5 border-b border-gray-200 text-red-500 text-sm line-through">
+                  <td className="px-5 py-5 border-b border-gray-200 text-sm">
                     <p className="whitespace-no-wrap"> {dept} </p>
                   </td>
                   <td className="px-5 py-5 border-b border-gray-200 text-sm">

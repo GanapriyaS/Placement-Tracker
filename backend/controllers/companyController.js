@@ -84,7 +84,7 @@ const deletejob = async (req,res) => {
 const deleteapplicant = async (req,res) => {
     try {
         const result = await client.query("update application set hire=$1 WHERE job_id=$2 and student_id=$3", ["rejected",req.params.jobid,req.params.studentid]);
-        console.log(result)
+        console.log("deleteapplicant")
         res.status(200).json(result.rowCount);
       } catch (err) {
         console.log(err)

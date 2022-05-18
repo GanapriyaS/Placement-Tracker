@@ -262,16 +262,16 @@ const Recruiters = () => {
                     <td className="px-5 py-5 border-b  border-gray-200 text-sm">
                       <p className="whitespace-no-wrap">{index + 1}</p>
                     </td>
-                    <td className="px-5 py-5 border-b border-gray-200 text-red-500 text-sm line-through">
+                    <td className="px-5 py-5 border-b border-gray-200 text-sm">
                       <p className="whitespace-no-wrap">{compname} </p>
                     </td>
-                    <td className="px-5 py-5 border-b border-gray-200 text-red-500 text-sm line-through">
+                    <td className="px-5 py-5 border-b border-gray-200 text-sm">
                       <p className="whitespace-no-wrap">{name} </p>
                     </td>
                     <td className="px-5 py-5 border-b border-gray-200  text-sm">
                       <p className="whitespace-no-wrap">{dept}</p>
                     </td>
-                    <td className="px-5 py-5 border-b border-gray-200 text-red-500 text-sm line-through">
+                    <td className="px-5 py-5 border-b border-gray-200 text-sm ">
                       <p className="whitespace-no-wrap"> {online} </p>
                     </td>
                     <td className="px-5 py-5 border-b border-gray-200  text-sm">

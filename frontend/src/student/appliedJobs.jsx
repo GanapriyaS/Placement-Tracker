@@ -128,7 +128,7 @@ const AppliedJobs = () => {
                       </span>
                     </Link>
                   </td>
-                  <td className="px-5 py-5 border-b border-gray-200 text-red-500 text-sm line-through">
+                  <td className="px-5 py-5 border-b border-gray-200 text-sm">
                     <p className="whitespace-no-wrap"> {hire} </p>
                   </td>
                 </tr>

@@ -33,6 +33,7 @@ const disapprovecompany = async (req,res) => {
 
 const approvecompany = async (req,res) => {
     try {
+        const data= await client.query("select email from company where id=$1", [req.params.id]);
         const result = await client.query("update company set approval=$1 where id=$2", [true,req.params.id]);
         if(result.rowCount>0){
             const results=await client.query("SELECT * FROM login where key=$1 and type=$2", [req.params.id,"company"]);
@@ -50,7 +51,7 @@ const approvecompany = async (req,res) => {
             
             transporter.sendMail({
               from: '"Ganapriya S" <ganapriyakheersagar@gmail.com>', // sender address
-              to: email, // list of receivers
+              to: data.rows[0].email, // list of receivers
               subject: "Regarding Authentication of Placement Tracker ✔", // Subject line
               text: "Username : "+req.params.id +"\nPassword : gct", // plain text body
             

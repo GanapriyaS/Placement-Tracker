@@ -94,7 +94,7 @@ useEffect(() => {
         <Route index element={<NavBar  type="home"/>} />
 
         <Route path="student" element={<NavBar type="other" />}>
-          <Route path="profile" element={<StudentProfile />} />
+          <Route path="profile/:student" element={<StudentProfile />} />
           <Route path="view" element={<StudentDetails />} />
         </Route>
 

@@ -30,15 +30,12 @@ const StudentDetails = () => {
   }, []);
 
   return (
-    <div className="w-full p-4 h-auto lg:h-screen pt-8 overflow-y-auto mt-6 px-10 ">
-      <a
-        href="/#"
-        className="flex justify-center items-center text-3xl lg:text-4xl font-bold mb-6"
-      >
+    <div className=" p-4 pt-10 w-full h-screen ">
+      <p className="flex justify-center items-center text-3xl lg:text-4xl font-bold mb-6">
         <span className="text-black ">Our Students</span>
-      </a>
+      </p>
       <div className="shadow rounded overflow-auto">
-        <table className="yellowleading-normal table-auto w-full ">
+        <table className="leading-normal table-auto w-full ">
           <thead>
             <tr className="bg-gray-100">
               <th className="px-5 py-3 border-b-2 border-gray-200 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider"></th>

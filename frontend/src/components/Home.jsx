@@ -3,8 +3,8 @@ import StudentDetails from "../student/studentDetails";
 const Home = () => {
   return (
     <>
-      <div className="w-full p-4 h-auto lg:h-screen pt-8 overflow-y-auto mt-6 px-10 ">
-        <div className="flex justify-center pb-5">
+      <div className="w-full  lg:p-4">
+        <div className="flex justify-center pb-5 p-4 pt-8 mt-6 px-10">
           <div className="">
             <a
               href="/#"
@@ -17,7 +17,7 @@ const Home = () => {
           </div>
         </div>
         <br></br>
-        <p className="font-bold text-justify text-sm lg:text-lg ">
+        <p className="font-bold text-justify text-sm lg:text-lg px-10">
           {" "}
           The institute offers undergraduate courses leading to the degree of
           Bachelor of Engineering and postgraduate courses award the Master of

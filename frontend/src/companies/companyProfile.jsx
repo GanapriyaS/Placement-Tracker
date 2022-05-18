@@ -39,7 +39,7 @@ const CompanyProfile = (props) => {
 
   return (
     <>
-      <div className="w-full lg:h-screen p-4  mt-8 overflow-y-auto ">
+      <div className="w-full p-4  mt-8">
         <div className="lg:flex justify-around ">
           <div className="">
             <a href="/#" className="flex items-center text-4xl  font-bold">

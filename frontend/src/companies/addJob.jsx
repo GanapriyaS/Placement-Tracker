@@ -77,7 +77,7 @@ const AddJobs = () => {
 
   return (
     <>
-      <div className="w-full h-screen p-4  mt-8 overflow-y-auto ">
+      <div className="w-full p-4  mt-8">
         <div className="grid justify-items-center ">
           <p className="bg-black rounded-full text-white py-3 px-4">Add jobs</p>
         </div>
