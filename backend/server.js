@@ -34,7 +34,6 @@ app.use('/company', companyRoutes);
 app.use('/student',studentRoutes);
 app.use('/admin', adminRoutes);
 
-app
 
 
 app.use(notFound)
